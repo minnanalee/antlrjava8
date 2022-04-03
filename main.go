@@ -16,6 +16,7 @@ func NewTreeShapeListener() *TreeShapeListener {
 
 func (this *TreeShapeListener) EnterEveryRule(ctx antlr.ParserRuleContext) {
 	fmt.Println(RuleNames[ctx.GetRuleContext().GetRuleIndex()])
+	fmt.Println(ctx.GetParent().GetChildCount())
 	fmt.Println(ctx.GetText())
 }
 
