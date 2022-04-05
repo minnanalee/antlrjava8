@@ -18,7 +18,7 @@ func main() {
 	p := base.NewJava8Parser(tokens)
 	visitor := vast.NewVisitor()
 	tree := p.CompilationUnit()
-	fmt.Println("test")
+	fmt.Println("test ")
 	fmt.Println(visitor.Visit(tree))
 
 }
