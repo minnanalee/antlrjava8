@@ -1,6 +1,6 @@
 // Code generated from ./Java8Parser.g4 by ANTLR 4.9. DO NOT EDIT.
 
-package parser // Java8Parser
+package base // Java8Parser
 
 import (
 	"fmt"
@@ -1538,10 +1538,10 @@ type Java8Parser struct {
 	*antlr.BaseParser
 }
 
-// NewJava8Parser produces a new parser instance for the optional input antlr.TokenStream.
+// NewJava8Parser produces a new base instance for the optional input antlr.TokenStream.
 //
 // The *Java8Parser instance produced may be reused by calling the SetInputStream method.
-// The initial parser configuration is expensive to construct, and the object is not thread-safe;
+// The initial base configuration is expensive to construct, and the object is not thread-safe;
 // however, if used within a Golang sync.Pool, the construction cost amortizes well and the
 // objects can be used in a thread-safe manner.
 func NewJava8Parser(input antlr.TokenStream) *Java8Parser {
@@ -1919,7 +1919,7 @@ const (
 type ILiteralContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsLiteralContext differentiates from other interfaces.
@@ -1997,6 +1997,16 @@ func (s *LiteralContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *LiteralContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitLiteral(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) Literal() (localctx ILiteralContext) {
 	localctx = NewLiteralContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 0, Java8ParserRULE_literal)
@@ -2038,7 +2048,7 @@ func (p *Java8Parser) Literal() (localctx ILiteralContext) {
 type IPrimitiveTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPrimitiveTypeContext differentiates from other interfaces.
@@ -2129,6 +2139,16 @@ func (s *PrimitiveTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PrimitiveTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPrimitiveType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) PrimitiveType() (localctx IPrimitiveTypeContext) {
 	localctx = NewPrimitiveTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 2, Java8ParserRULE_primitiveType)
@@ -2204,7 +2224,7 @@ func (p *Java8Parser) PrimitiveType() (localctx IPrimitiveTypeContext) {
 type INumericTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsNumericTypeContext differentiates from other interfaces.
@@ -2278,6 +2298,16 @@ func (s *NumericTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *NumericTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitNumericType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) NumericType() (localctx INumericTypeContext) {
 	localctx = NewNumericTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 4, Java8ParserRULE_numericType)
@@ -2327,7 +2357,7 @@ func (p *Java8Parser) NumericType() (localctx INumericTypeContext) {
 type IIntegralTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsIntegralTypeContext differentiates from other interfaces.
@@ -2401,6 +2431,16 @@ func (s *IntegralTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *IntegralTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitIntegralType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) IntegralType() (localctx IIntegralTypeContext) {
 	localctx = NewIntegralTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 6, Java8ParserRULE_integralType)
@@ -2442,7 +2482,7 @@ func (p *Java8Parser) IntegralType() (localctx IIntegralTypeContext) {
 type IFloatingPointTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsFloatingPointTypeContext differentiates from other interfaces.
@@ -2504,6 +2544,16 @@ func (s *FloatingPointTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *FloatingPointTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitFloatingPointType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) FloatingPointType() (localctx IFloatingPointTypeContext) {
 	localctx = NewFloatingPointTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 8, Java8ParserRULE_floatingPointType)
@@ -2545,7 +2595,7 @@ func (p *Java8Parser) FloatingPointType() (localctx IFloatingPointTypeContext) {
 type IReferenceTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsReferenceTypeContext differentiates from other interfaces.
@@ -2629,6 +2679,16 @@ func (s *ReferenceTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ReferenceTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitReferenceType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ReferenceType() (localctx IReferenceTypeContext) {
 	localctx = NewReferenceTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 10, Java8ParserRULE_referenceType)
@@ -2682,7 +2742,7 @@ func (p *Java8Parser) ReferenceType() (localctx IReferenceTypeContext) {
 type IClassOrInterfaceTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsClassOrInterfaceTypeContext differentiates from other interfaces.
@@ -2802,6 +2862,16 @@ func (s *ClassOrInterfaceTypeContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *ClassOrInterfaceTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitClassOrInterfaceType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ClassOrInterfaceType() (localctx IClassOrInterfaceTypeContext) {
 	localctx = NewClassOrInterfaceTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 12, Java8ParserRULE_classOrInterfaceType)
@@ -2877,7 +2947,7 @@ func (p *Java8Parser) ClassOrInterfaceType() (localctx IClassOrInterfaceTypeCont
 type IClassTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsClassTypeContext differentiates from other interfaces.
@@ -2979,6 +3049,16 @@ func (s *ClassTypeContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ClassTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitClassType(s)
+	}
+}
+
+func (s *ClassTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitClassType(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -3087,7 +3167,7 @@ func (p *Java8Parser) ClassType() (localctx IClassTypeContext) {
 type IClassType_lf_classOrInterfaceTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsClassType_lf_classOrInterfaceTypeContext differentiates from other interfaces.
@@ -3182,6 +3262,16 @@ func (s *ClassType_lf_classOrInterfaceTypeContext) ExitRule(listener antlr.Parse
 	}
 }
 
+func (s *ClassType_lf_classOrInterfaceTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitClassType_lf_classOrInterfaceType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ClassType_lf_classOrInterfaceType() (localctx IClassType_lf_classOrInterfaceTypeContext) {
 	localctx = NewClassType_lf_classOrInterfaceTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 16, Java8ParserRULE_classType_lf_classOrInterfaceType)
@@ -3244,7 +3334,7 @@ func (p *Java8Parser) ClassType_lf_classOrInterfaceType() (localctx IClassType_l
 type IClassType_lfno_classOrInterfaceTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsClassType_lfno_classOrInterfaceTypeContext differentiates from other interfaces.
@@ -3335,6 +3425,16 @@ func (s *ClassType_lfno_classOrInterfaceTypeContext) ExitRule(listener antlr.Par
 	}
 }
 
+func (s *ClassType_lfno_classOrInterfaceTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitClassType_lfno_classOrInterfaceType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ClassType_lfno_classOrInterfaceType() (localctx IClassType_lfno_classOrInterfaceTypeContext) {
 	localctx = NewClassType_lfno_classOrInterfaceTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 18, Java8ParserRULE_classType_lfno_classOrInterfaceType)
@@ -3393,7 +3493,7 @@ func (p *Java8Parser) ClassType_lfno_classOrInterfaceType() (localctx IClassType
 type IInterfaceTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsInterfaceTypeContext differentiates from other interfaces.
@@ -3457,6 +3557,16 @@ func (s *InterfaceTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *InterfaceTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitInterfaceType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) InterfaceType() (localctx IInterfaceTypeContext) {
 	localctx = NewInterfaceTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 20, Java8ParserRULE_interfaceType)
@@ -3490,7 +3600,7 @@ func (p *Java8Parser) InterfaceType() (localctx IInterfaceTypeContext) {
 type IInterfaceType_lf_classOrInterfaceTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsInterfaceType_lf_classOrInterfaceTypeContext differentiates from other interfaces.
@@ -3555,6 +3665,16 @@ func (s *InterfaceType_lf_classOrInterfaceTypeContext) ExitRule(listener antlr.P
 	}
 }
 
+func (s *InterfaceType_lf_classOrInterfaceTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitInterfaceType_lf_classOrInterfaceType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) InterfaceType_lf_classOrInterfaceType() (localctx IInterfaceType_lf_classOrInterfaceTypeContext) {
 	localctx = NewInterfaceType_lf_classOrInterfaceTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 22, Java8ParserRULE_interfaceType_lf_classOrInterfaceType)
@@ -3588,7 +3708,7 @@ func (p *Java8Parser) InterfaceType_lf_classOrInterfaceType() (localctx IInterfa
 type IInterfaceType_lfno_classOrInterfaceTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsInterfaceType_lfno_classOrInterfaceTypeContext differentiates from other interfaces.
@@ -3653,6 +3773,16 @@ func (s *InterfaceType_lfno_classOrInterfaceTypeContext) ExitRule(listener antlr
 	}
 }
 
+func (s *InterfaceType_lfno_classOrInterfaceTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitInterfaceType_lfno_classOrInterfaceType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) InterfaceType_lfno_classOrInterfaceType() (localctx IInterfaceType_lfno_classOrInterfaceTypeContext) {
 	localctx = NewInterfaceType_lfno_classOrInterfaceTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 24, Java8ParserRULE_interfaceType_lfno_classOrInterfaceType)
@@ -3686,7 +3816,7 @@ func (p *Java8Parser) InterfaceType_lfno_classOrInterfaceType() (localctx IInter
 type ITypeVariableContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsTypeVariableContext differentiates from other interfaces.
@@ -3767,6 +3897,16 @@ func (s *TypeVariableContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TypeVariableContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitTypeVariable(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) TypeVariable() (localctx ITypeVariableContext) {
 	localctx = NewTypeVariableContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 26, Java8ParserRULE_typeVariable)
@@ -3815,7 +3955,7 @@ func (p *Java8Parser) TypeVariable() (localctx ITypeVariableContext) {
 type IArrayTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsArrayTypeContext differentiates from other interfaces.
@@ -3909,6 +4049,16 @@ func (s *ArrayTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ArrayTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitArrayType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ArrayType() (localctx IArrayTypeContext) {
 	localctx = NewArrayTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 28, Java8ParserRULE_arrayType)
@@ -3974,7 +4124,7 @@ func (p *Java8Parser) ArrayType() (localctx IArrayTypeContext) {
 type IDimsContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsDimsContext differentiates from other interfaces.
@@ -4067,6 +4217,16 @@ func (s *DimsContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *DimsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitDims(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) Dims() (localctx IDimsContext) {
 	localctx = NewDimsContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 30, Java8ParserRULE_dims)
@@ -4155,7 +4315,7 @@ func (p *Java8Parser) Dims() (localctx IDimsContext) {
 type ITypeParameterContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsTypeParameterContext differentiates from other interfaces.
@@ -4246,6 +4406,16 @@ func (s *TypeParameterContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TypeParameterContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitTypeParameter(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) TypeParameter() (localctx ITypeParameterContext) {
 	localctx = NewTypeParameterContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 32, Java8ParserRULE_typeParameter)
@@ -4305,7 +4475,7 @@ func (p *Java8Parser) TypeParameter() (localctx ITypeParameterContext) {
 type ITypeParameterModifierContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsTypeParameterModifierContext differentiates from other interfaces.
@@ -4369,6 +4539,16 @@ func (s *TypeParameterModifierContext) ExitRule(listener antlr.ParseTreeListener
 	}
 }
 
+func (s *TypeParameterModifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitTypeParameterModifier(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) TypeParameterModifier() (localctx ITypeParameterModifierContext) {
 	localctx = NewTypeParameterModifierContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 34, Java8ParserRULE_typeParameterModifier)
@@ -4402,7 +4582,7 @@ func (p *Java8Parser) TypeParameterModifier() (localctx ITypeParameterModifierCo
 type ITypeBoundContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsTypeBoundContext differentiates from other interfaces.
@@ -4503,6 +4683,16 @@ func (s *TypeBoundContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TypeBoundContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitTypeBound(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) TypeBound() (localctx ITypeBoundContext) {
 	localctx = NewTypeBoundContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 36, Java8ParserRULE_typeBound)
@@ -4572,7 +4762,7 @@ func (p *Java8Parser) TypeBound() (localctx ITypeBoundContext) {
 type IAdditionalBoundContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsAdditionalBoundContext differentiates from other interfaces.
@@ -4640,6 +4830,16 @@ func (s *AdditionalBoundContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *AdditionalBoundContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitAdditionalBound(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) AdditionalBound() (localctx IAdditionalBoundContext) {
 	localctx = NewAdditionalBoundContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 38, Java8ParserRULE_additionalBound)
@@ -4677,7 +4877,7 @@ func (p *Java8Parser) AdditionalBound() (localctx IAdditionalBoundContext) {
 type ITypeArgumentsContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsTypeArgumentsContext differentiates from other interfaces.
@@ -4749,6 +4949,16 @@ func (s *TypeArgumentsContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TypeArgumentsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitTypeArguments(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) TypeArguments() (localctx ITypeArgumentsContext) {
 	localctx = NewTypeArgumentsContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 40, Java8ParserRULE_typeArguments)
@@ -4790,7 +5000,7 @@ func (p *Java8Parser) TypeArguments() (localctx ITypeArgumentsContext) {
 type ITypeArgumentListContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsTypeArgumentListContext differentiates from other interfaces.
@@ -4875,6 +5085,16 @@ func (s *TypeArgumentListContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TypeArgumentListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitTypeArgumentList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) TypeArgumentList() (localctx ITypeArgumentListContext) {
 	localctx = NewTypeArgumentListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 42, Java8ParserRULE_typeArgumentList)
@@ -4927,7 +5147,7 @@ func (p *Java8Parser) TypeArgumentList() (localctx ITypeArgumentListContext) {
 type ITypeArgumentContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsTypeArgumentContext differentiates from other interfaces.
@@ -5001,6 +5221,16 @@ func (s *TypeArgumentContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TypeArgumentContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitTypeArgument(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) TypeArgument() (localctx ITypeArgumentContext) {
 	localctx = NewTypeArgumentContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 44, Java8ParserRULE_typeArgument)
@@ -5047,7 +5277,7 @@ func (p *Java8Parser) TypeArgument() (localctx ITypeArgumentContext) {
 type IWildcardContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsWildcardContext differentiates from other interfaces.
@@ -5138,6 +5368,16 @@ func (s *WildcardContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *WildcardContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitWildcard(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) Wildcard() (localctx IWildcardContext) {
 	localctx = NewWildcardContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 46, Java8ParserRULE_wildcard)
@@ -5197,7 +5437,7 @@ func (p *Java8Parser) Wildcard() (localctx IWildcardContext) {
 type IWildcardBoundsContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsWildcardBoundsContext differentiates from other interfaces.
@@ -5269,6 +5509,16 @@ func (s *WildcardBoundsContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *WildcardBoundsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitWildcardBounds(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) WildcardBounds() (localctx IWildcardBoundsContext) {
 	localctx = NewWildcardBoundsContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 48, Java8ParserRULE_wildcardBounds)
@@ -5326,7 +5576,7 @@ func (p *Java8Parser) WildcardBounds() (localctx IWildcardBoundsContext) {
 type IPackageNameContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPackageNameContext differentiates from other interfaces.
@@ -5395,6 +5645,16 @@ func (s *PackageNameContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *PackageNameContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitPackageName(s)
+	}
+}
+
+func (s *PackageNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPackageName(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -5475,7 +5735,7 @@ func (p *Java8Parser) packageName(_p int) (localctx IPackageNameContext) {
 type ITypeNameContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsTypeNameContext differentiates from other interfaces.
@@ -5547,6 +5807,16 @@ func (s *TypeNameContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TypeNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitTypeName(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) TypeName() (localctx ITypeNameContext) {
 	localctx = NewTypeNameContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 52, Java8ParserRULE_typeName)
@@ -5601,7 +5871,7 @@ func (p *Java8Parser) TypeName() (localctx ITypeNameContext) {
 type IPackageOrTypeNameContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPackageOrTypeNameContext differentiates from other interfaces.
@@ -5670,6 +5940,16 @@ func (s *PackageOrTypeNameContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *PackageOrTypeNameContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitPackageOrTypeName(s)
+	}
+}
+
+func (s *PackageOrTypeNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPackageOrTypeName(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -5750,7 +6030,7 @@ func (p *Java8Parser) packageOrTypeName(_p int) (localctx IPackageOrTypeNameCont
 type IExpressionNameContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsExpressionNameContext differentiates from other interfaces.
@@ -5822,6 +6102,16 @@ func (s *ExpressionNameContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ExpressionNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitExpressionName(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ExpressionName() (localctx IExpressionNameContext) {
 	localctx = NewExpressionNameContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 56, Java8ParserRULE_expressionName)
@@ -5876,7 +6166,7 @@ func (p *Java8Parser) ExpressionName() (localctx IExpressionNameContext) {
 type IMethodNameContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsMethodNameContext differentiates from other interfaces.
@@ -5934,6 +6224,16 @@ func (s *MethodNameContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *MethodNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitMethodName(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) MethodName() (localctx IMethodNameContext) {
 	localctx = NewMethodNameContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 58, Java8ParserRULE_methodName)
@@ -5967,7 +6267,7 @@ func (p *Java8Parser) MethodName() (localctx IMethodNameContext) {
 type IAmbiguousNameContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsAmbiguousNameContext differentiates from other interfaces.
@@ -6036,6 +6336,16 @@ func (s *AmbiguousNameContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *AmbiguousNameContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitAmbiguousName(s)
+	}
+}
+
+func (s *AmbiguousNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitAmbiguousName(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -6116,7 +6426,7 @@ func (p *Java8Parser) ambiguousName(_p int) (localctx IAmbiguousNameContext) {
 type ICompilationUnitContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsCompilationUnitContext differentiates from other interfaces.
@@ -6230,6 +6540,16 @@ func (s *CompilationUnitContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *CompilationUnitContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitCompilationUnit(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) CompilationUnit() (localctx ICompilationUnitContext) {
 	localctx = NewCompilationUnitContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 62, Java8ParserRULE_compilationUnit)
@@ -6302,7 +6622,7 @@ func (p *Java8Parser) CompilationUnit() (localctx ICompilationUnitContext) {
 type IPackageDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPackageDeclarationContext differentiates from other interfaces.
@@ -6397,6 +6717,16 @@ func (s *PackageDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PackageDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPackageDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) PackageDeclaration() (localctx IPackageDeclarationContext) {
 	localctx = NewPackageDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 64, Java8ParserRULE_packageDeclaration)
@@ -6453,7 +6783,7 @@ func (p *Java8Parser) PackageDeclaration() (localctx IPackageDeclarationContext)
 type IPackageModifierContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPackageModifierContext differentiates from other interfaces.
@@ -6517,6 +6847,16 @@ func (s *PackageModifierContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PackageModifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPackageModifier(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) PackageModifier() (localctx IPackageModifierContext) {
 	localctx = NewPackageModifierContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 66, Java8ParserRULE_packageModifier)
@@ -6550,7 +6890,7 @@ func (p *Java8Parser) PackageModifier() (localctx IPackageModifierContext) {
 type IImportDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsImportDeclarationContext differentiates from other interfaces.
@@ -6644,6 +6984,16 @@ func (s *ImportDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ImportDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitImportDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ImportDeclaration() (localctx IImportDeclarationContext) {
 	localctx = NewImportDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 68, Java8ParserRULE_importDeclaration)
@@ -6704,7 +7054,7 @@ func (p *Java8Parser) ImportDeclaration() (localctx IImportDeclarationContext) {
 type ISingleTypeImportDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsSingleTypeImportDeclarationContext differentiates from other interfaces.
@@ -6776,6 +7126,16 @@ func (s *SingleTypeImportDeclarationContext) ExitRule(listener antlr.ParseTreeLi
 	}
 }
 
+func (s *SingleTypeImportDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitSingleTypeImportDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) SingleTypeImportDeclaration() (localctx ISingleTypeImportDeclarationContext) {
 	localctx = NewSingleTypeImportDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 70, Java8ParserRULE_singleTypeImportDeclaration)
@@ -6817,7 +7177,7 @@ func (p *Java8Parser) SingleTypeImportDeclaration() (localctx ISingleTypeImportD
 type ITypeImportOnDemandDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsTypeImportOnDemandDeclarationContext differentiates from other interfaces.
@@ -6897,6 +7257,16 @@ func (s *TypeImportOnDemandDeclarationContext) ExitRule(listener antlr.ParseTree
 	}
 }
 
+func (s *TypeImportOnDemandDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitTypeImportOnDemandDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) TypeImportOnDemandDeclaration() (localctx ITypeImportOnDemandDeclarationContext) {
 	localctx = NewTypeImportOnDemandDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 72, Java8ParserRULE_typeImportOnDemandDeclaration)
@@ -6946,7 +7316,7 @@ func (p *Java8Parser) TypeImportOnDemandDeclaration() (localctx ITypeImportOnDem
 type ISingleStaticImportDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsSingleStaticImportDeclarationContext differentiates from other interfaces.
@@ -7030,6 +7400,16 @@ func (s *SingleStaticImportDeclarationContext) ExitRule(listener antlr.ParseTree
 	}
 }
 
+func (s *SingleStaticImportDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitSingleStaticImportDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) SingleStaticImportDeclaration() (localctx ISingleStaticImportDeclarationContext) {
 	localctx = NewSingleStaticImportDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 74, Java8ParserRULE_singleStaticImportDeclaration)
@@ -7083,7 +7463,7 @@ func (p *Java8Parser) SingleStaticImportDeclaration() (localctx ISingleStaticImp
 type IStaticImportOnDemandDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsStaticImportOnDemandDeclarationContext differentiates from other interfaces.
@@ -7167,6 +7547,16 @@ func (s *StaticImportOnDemandDeclarationContext) ExitRule(listener antlr.ParseTr
 	}
 }
 
+func (s *StaticImportOnDemandDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitStaticImportOnDemandDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) StaticImportOnDemandDeclaration() (localctx IStaticImportOnDemandDeclarationContext) {
 	localctx = NewStaticImportOnDemandDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 76, Java8ParserRULE_staticImportOnDemandDeclaration)
@@ -7220,7 +7610,7 @@ func (p *Java8Parser) StaticImportOnDemandDeclaration() (localctx IStaticImportO
 type ITypeDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsTypeDeclarationContext differentiates from other interfaces.
@@ -7298,6 +7688,16 @@ func (s *TypeDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TypeDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitTypeDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) TypeDeclaration() (localctx ITypeDeclarationContext) {
 	localctx = NewTypeDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 78, Java8ParserRULE_typeDeclaration)
@@ -7351,7 +7751,7 @@ func (p *Java8Parser) TypeDeclaration() (localctx ITypeDeclarationContext) {
 type IClassDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsClassDeclarationContext differentiates from other interfaces.
@@ -7425,6 +7825,16 @@ func (s *ClassDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ClassDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitClassDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ClassDeclaration() (localctx IClassDeclarationContext) {
 	localctx = NewClassDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 80, Java8ParserRULE_classDeclaration)
@@ -7471,7 +7881,7 @@ func (p *Java8Parser) ClassDeclaration() (localctx IClassDeclarationContext) {
 type INormalClassDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsNormalClassDeclarationContext differentiates from other interfaces.
@@ -7596,6 +8006,16 @@ func (s *NormalClassDeclarationContext) ExitRule(listener antlr.ParseTreeListene
 	}
 }
 
+func (s *NormalClassDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitNormalClassDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) NormalClassDeclaration() (localctx INormalClassDeclarationContext) {
 	localctx = NewNormalClassDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 82, Java8ParserRULE_normalClassDeclaration)
@@ -7685,7 +8105,7 @@ func (p *Java8Parser) NormalClassDeclaration() (localctx INormalClassDeclaration
 type IClassModifierContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsClassModifierContext differentiates from other interfaces.
@@ -7774,6 +8194,16 @@ func (s *ClassModifierContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ClassModifierContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitClassModifier(s)
+	}
+}
+
+func (s *ClassModifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitClassModifier(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -7868,7 +8298,7 @@ func (p *Java8Parser) ClassModifier() (localctx IClassModifierContext) {
 type ITypeParametersContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsTypeParametersContext differentiates from other interfaces.
@@ -7940,6 +8370,16 @@ func (s *TypeParametersContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TypeParametersContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitTypeParameters(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) TypeParameters() (localctx ITypeParametersContext) {
 	localctx = NewTypeParametersContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 86, Java8ParserRULE_typeParameters)
@@ -7981,7 +8421,7 @@ func (p *Java8Parser) TypeParameters() (localctx ITypeParametersContext) {
 type ITypeParameterListContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsTypeParameterListContext differentiates from other interfaces.
@@ -8066,6 +8506,16 @@ func (s *TypeParameterListContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TypeParameterListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitTypeParameterList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) TypeParameterList() (localctx ITypeParameterListContext) {
 	localctx = NewTypeParameterListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 88, Java8ParserRULE_typeParameterList)
@@ -8118,7 +8568,7 @@ func (p *Java8Parser) TypeParameterList() (localctx ITypeParameterListContext) {
 type ISuperclassContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsSuperclassContext differentiates from other interfaces.
@@ -8186,6 +8636,16 @@ func (s *SuperclassContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *SuperclassContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitSuperclass(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) Superclass() (localctx ISuperclassContext) {
 	localctx = NewSuperclassContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 90, Java8ParserRULE_superclass)
@@ -8223,7 +8683,7 @@ func (p *Java8Parser) Superclass() (localctx ISuperclassContext) {
 type ISuperinterfacesContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsSuperinterfacesContext differentiates from other interfaces.
@@ -8291,6 +8751,16 @@ func (s *SuperinterfacesContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *SuperinterfacesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitSuperinterfaces(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) Superinterfaces() (localctx ISuperinterfacesContext) {
 	localctx = NewSuperinterfacesContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 92, Java8ParserRULE_superinterfaces)
@@ -8328,7 +8798,7 @@ func (p *Java8Parser) Superinterfaces() (localctx ISuperinterfacesContext) {
 type IInterfaceTypeListContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsInterfaceTypeListContext differentiates from other interfaces.
@@ -8413,6 +8883,16 @@ func (s *InterfaceTypeListContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *InterfaceTypeListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitInterfaceTypeList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) InterfaceTypeList() (localctx IInterfaceTypeListContext) {
 	localctx = NewInterfaceTypeListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 94, Java8ParserRULE_interfaceTypeList)
@@ -8465,7 +8945,7 @@ func (p *Java8Parser) InterfaceTypeList() (localctx IInterfaceTypeListContext) {
 type IClassBodyContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsClassBodyContext differentiates from other interfaces.
@@ -8550,6 +9030,16 @@ func (s *ClassBodyContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ClassBodyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitClassBody(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ClassBody() (localctx IClassBodyContext) {
 	localctx = NewClassBodyContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 96, Java8ParserRULE_classBody)
@@ -8602,7 +9092,7 @@ func (p *Java8Parser) ClassBody() (localctx IClassBodyContext) {
 type IClassBodyDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsClassBodyDeclarationContext differentiates from other interfaces.
@@ -8696,6 +9186,16 @@ func (s *ClassBodyDeclarationContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *ClassBodyDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitClassBodyDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ClassBodyDeclaration() (localctx IClassBodyDeclarationContext) {
 	localctx = NewClassBodyDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 98, Java8ParserRULE_classBodyDeclaration)
@@ -8756,7 +9256,7 @@ func (p *Java8Parser) ClassBodyDeclaration() (localctx IClassBodyDeclarationCont
 type IClassMemberDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsClassMemberDeclarationContext differentiates from other interfaces.
@@ -8854,6 +9354,16 @@ func (s *ClassMemberDeclarationContext) ExitRule(listener antlr.ParseTreeListene
 	}
 }
 
+func (s *ClassMemberDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitClassMemberDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ClassMemberDeclaration() (localctx IClassMemberDeclarationContext) {
 	localctx = NewClassMemberDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 100, Java8ParserRULE_classMemberDeclaration)
@@ -8921,7 +9431,7 @@ func (p *Java8Parser) ClassMemberDeclaration() (localctx IClassMemberDeclaration
 type IFieldDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsFieldDeclarationContext differentiates from other interfaces.
@@ -9022,6 +9532,16 @@ func (s *FieldDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *FieldDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitFieldDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) FieldDeclaration() (localctx IFieldDeclarationContext) {
 	localctx = NewFieldDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 102, Java8ParserRULE_fieldDeclaration)
@@ -9078,7 +9598,7 @@ func (p *Java8Parser) FieldDeclaration() (localctx IFieldDeclarationContext) {
 type IFieldModifierContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsFieldModifierContext differentiates from other interfaces.
@@ -9167,6 +9687,16 @@ func (s *FieldModifierContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *FieldModifierContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitFieldModifier(s)
+	}
+}
+
+func (s *FieldModifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitFieldModifier(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -9261,7 +9791,7 @@ func (p *Java8Parser) FieldModifier() (localctx IFieldModifierContext) {
 type IVariableDeclaratorListContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsVariableDeclaratorListContext differentiates from other interfaces.
@@ -9346,6 +9876,16 @@ func (s *VariableDeclaratorListContext) ExitRule(listener antlr.ParseTreeListene
 	}
 }
 
+func (s *VariableDeclaratorListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitVariableDeclaratorList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) VariableDeclaratorList() (localctx IVariableDeclaratorListContext) {
 	localctx = NewVariableDeclaratorListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 106, Java8ParserRULE_variableDeclaratorList)
@@ -9398,7 +9938,7 @@ func (p *Java8Parser) VariableDeclaratorList() (localctx IVariableDeclaratorList
 type IVariableDeclaratorContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsVariableDeclaratorContext differentiates from other interfaces.
@@ -9476,6 +10016,16 @@ func (s *VariableDeclaratorContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *VariableDeclaratorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitVariableDeclarator(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) VariableDeclarator() (localctx IVariableDeclaratorContext) {
 	localctx = NewVariableDeclaratorContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 108, Java8ParserRULE_variableDeclarator)
@@ -9525,7 +10075,7 @@ func (p *Java8Parser) VariableDeclarator() (localctx IVariableDeclaratorContext)
 type IVariableDeclaratorIdContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsVariableDeclaratorIdContext differentiates from other interfaces.
@@ -9593,6 +10143,16 @@ func (s *VariableDeclaratorIdContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *VariableDeclaratorIdContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitVariableDeclaratorId(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) VariableDeclaratorId() (localctx IVariableDeclaratorIdContext) {
 	localctx = NewVariableDeclaratorIdContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 110, Java8ParserRULE_variableDeclaratorId)
@@ -9638,7 +10198,7 @@ func (p *Java8Parser) VariableDeclaratorId() (localctx IVariableDeclaratorIdCont
 type IVariableInitializerContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsVariableInitializerContext differentiates from other interfaces.
@@ -9712,6 +10272,16 @@ func (s *VariableInitializerContext) ExitRule(listener antlr.ParseTreeListener) 
 	}
 }
 
+func (s *VariableInitializerContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitVariableInitializer(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) VariableInitializer() (localctx IVariableInitializerContext) {
 	localctx = NewVariableInitializerContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 112, Java8ParserRULE_variableInitializer)
@@ -9761,7 +10331,7 @@ func (p *Java8Parser) VariableInitializer() (localctx IVariableInitializerContex
 type IUnannTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsUnannTypeContext differentiates from other interfaces.
@@ -9835,6 +10405,16 @@ func (s *UnannTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *UnannTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitUnannType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) UnannType() (localctx IUnannTypeContext) {
 	localctx = NewUnannTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 114, Java8ParserRULE_unannType)
@@ -9881,7 +10461,7 @@ func (p *Java8Parser) UnannType() (localctx IUnannTypeContext) {
 type IUnannPrimitiveTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsUnannPrimitiveTypeContext differentiates from other interfaces.
@@ -9949,6 +10529,16 @@ func (s *UnannPrimitiveTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *UnannPrimitiveTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitUnannPrimitiveType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) UnannPrimitiveType() (localctx IUnannPrimitiveTypeContext) {
 	localctx = NewUnannPrimitiveTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 116, Java8ParserRULE_unannPrimitiveType)
@@ -9998,7 +10588,7 @@ func (p *Java8Parser) UnannPrimitiveType() (localctx IUnannPrimitiveTypeContext)
 type IUnannReferenceTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsUnannReferenceTypeContext differentiates from other interfaces.
@@ -10082,6 +10672,16 @@ func (s *UnannReferenceTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *UnannReferenceTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitUnannReferenceType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) UnannReferenceType() (localctx IUnannReferenceTypeContext) {
 	localctx = NewUnannReferenceTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 118, Java8ParserRULE_unannReferenceType)
@@ -10135,7 +10735,7 @@ func (p *Java8Parser) UnannReferenceType() (localctx IUnannReferenceTypeContext)
 type IUnannClassOrInterfaceTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsUnannClassOrInterfaceTypeContext differentiates from other interfaces.
@@ -10255,6 +10855,16 @@ func (s *UnannClassOrInterfaceTypeContext) ExitRule(listener antlr.ParseTreeList
 	}
 }
 
+func (s *UnannClassOrInterfaceTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitUnannClassOrInterfaceType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) UnannClassOrInterfaceType() (localctx IUnannClassOrInterfaceTypeContext) {
 	localctx = NewUnannClassOrInterfaceTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 120, Java8ParserRULE_unannClassOrInterfaceType)
@@ -10330,7 +10940,7 @@ func (p *Java8Parser) UnannClassOrInterfaceType() (localctx IUnannClassOrInterfa
 type IUnannClassTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsUnannClassTypeContext differentiates from other interfaces.
@@ -10435,6 +11045,16 @@ func (s *UnannClassTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *UnannClassTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitUnannClassType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) UnannClassType() (localctx IUnannClassTypeContext) {
 	localctx = NewUnannClassTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 122, Java8ParserRULE_unannClassType)
@@ -10526,7 +11146,7 @@ func (p *Java8Parser) UnannClassType() (localctx IUnannClassTypeContext) {
 type IUnannClassType_lf_unannClassOrInterfaceTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsUnannClassType_lf_unannClassOrInterfaceTypeContext differentiates from other interfaces.
@@ -10624,6 +11244,16 @@ func (s *UnannClassType_lf_unannClassOrInterfaceTypeContext) ExitRule(listener a
 	}
 }
 
+func (s *UnannClassType_lf_unannClassOrInterfaceTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitUnannClassType_lf_unannClassOrInterfaceType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) UnannClassType_lf_unannClassOrInterfaceType() (localctx IUnannClassType_lf_unannClassOrInterfaceTypeContext) {
 	localctx = NewUnannClassType_lf_unannClassOrInterfaceTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 124, Java8ParserRULE_unannClassType_lf_unannClassOrInterfaceType)
@@ -10687,7 +11317,7 @@ func (p *Java8Parser) UnannClassType_lf_unannClassOrInterfaceType() (localctx IU
 type IUnannClassType_lfno_unannClassOrInterfaceTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsUnannClassType_lfno_unannClassOrInterfaceTypeContext differentiates from other interfaces.
@@ -10758,6 +11388,16 @@ func (s *UnannClassType_lfno_unannClassOrInterfaceTypeContext) ExitRule(listener
 	}
 }
 
+func (s *UnannClassType_lfno_unannClassOrInterfaceTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitUnannClassType_lfno_unannClassOrInterfaceType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) UnannClassType_lfno_unannClassOrInterfaceType() (localctx IUnannClassType_lfno_unannClassOrInterfaceTypeContext) {
 	localctx = NewUnannClassType_lfno_unannClassOrInterfaceTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 126, Java8ParserRULE_unannClassType_lfno_unannClassOrInterfaceType)
@@ -10803,7 +11443,7 @@ func (p *Java8Parser) UnannClassType_lfno_unannClassOrInterfaceType() (localctx 
 type IUnannInterfaceTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsUnannInterfaceTypeContext differentiates from other interfaces.
@@ -10867,6 +11507,16 @@ func (s *UnannInterfaceTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *UnannInterfaceTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitUnannInterfaceType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) UnannInterfaceType() (localctx IUnannInterfaceTypeContext) {
 	localctx = NewUnannInterfaceTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 128, Java8ParserRULE_unannInterfaceType)
@@ -10900,7 +11550,7 @@ func (p *Java8Parser) UnannInterfaceType() (localctx IUnannInterfaceTypeContext)
 type IUnannInterfaceType_lf_unannClassOrInterfaceTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsUnannInterfaceType_lf_unannClassOrInterfaceTypeContext differentiates from other interfaces.
@@ -10967,6 +11617,16 @@ func (s *UnannInterfaceType_lf_unannClassOrInterfaceTypeContext) ExitRule(listen
 	}
 }
 
+func (s *UnannInterfaceType_lf_unannClassOrInterfaceTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitUnannInterfaceType_lf_unannClassOrInterfaceType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) UnannInterfaceType_lf_unannClassOrInterfaceType() (localctx IUnannInterfaceType_lf_unannClassOrInterfaceTypeContext) {
 	localctx = NewUnannInterfaceType_lf_unannClassOrInterfaceTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 130, Java8ParserRULE_unannInterfaceType_lf_unannClassOrInterfaceType)
@@ -11000,7 +11660,7 @@ func (p *Java8Parser) UnannInterfaceType_lf_unannClassOrInterfaceType() (localct
 type IUnannInterfaceType_lfno_unannClassOrInterfaceTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsUnannInterfaceType_lfno_unannClassOrInterfaceTypeContext differentiates from other interfaces.
@@ -11067,6 +11727,16 @@ func (s *UnannInterfaceType_lfno_unannClassOrInterfaceTypeContext) ExitRule(list
 	}
 }
 
+func (s *UnannInterfaceType_lfno_unannClassOrInterfaceTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitUnannInterfaceType_lfno_unannClassOrInterfaceType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) UnannInterfaceType_lfno_unannClassOrInterfaceType() (localctx IUnannInterfaceType_lfno_unannClassOrInterfaceTypeContext) {
 	localctx = NewUnannInterfaceType_lfno_unannClassOrInterfaceTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 132, Java8ParserRULE_unannInterfaceType_lfno_unannClassOrInterfaceType)
@@ -11100,7 +11770,7 @@ func (p *Java8Parser) UnannInterfaceType_lfno_unannClassOrInterfaceType() (local
 type IUnannTypeVariableContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsUnannTypeVariableContext differentiates from other interfaces.
@@ -11158,6 +11828,16 @@ func (s *UnannTypeVariableContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *UnannTypeVariableContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitUnannTypeVariable(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) UnannTypeVariable() (localctx IUnannTypeVariableContext) {
 	localctx = NewUnannTypeVariableContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 134, Java8ParserRULE_unannTypeVariable)
@@ -11191,7 +11871,7 @@ func (p *Java8Parser) UnannTypeVariable() (localctx IUnannTypeVariableContext) {
 type IUnannArrayTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsUnannArrayTypeContext differentiates from other interfaces.
@@ -11285,6 +11965,16 @@ func (s *UnannArrayTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *UnannArrayTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitUnannArrayType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) UnannArrayType() (localctx IUnannArrayTypeContext) {
 	localctx = NewUnannArrayTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 136, Java8ParserRULE_unannArrayType)
@@ -11350,7 +12040,7 @@ func (p *Java8Parser) UnannArrayType() (localctx IUnannArrayTypeContext) {
 type IMethodDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsMethodDeclarationContext differentiates from other interfaces.
@@ -11447,6 +12137,16 @@ func (s *MethodDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *MethodDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitMethodDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) MethodDeclaration() (localctx IMethodDeclarationContext) {
 	localctx = NewMethodDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 138, Java8ParserRULE_methodDeclaration)
@@ -11499,7 +12199,7 @@ func (p *Java8Parser) MethodDeclaration() (localctx IMethodDeclarationContext) {
 type IMethodModifierContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsMethodModifierContext differentiates from other interfaces.
@@ -11596,6 +12296,16 @@ func (s *MethodModifierContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *MethodModifierContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitMethodModifier(s)
+	}
+}
+
+func (s *MethodModifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitMethodModifier(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -11704,7 +12414,7 @@ func (p *Java8Parser) MethodModifier() (localctx IMethodModifierContext) {
 type IMethodHeaderContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsMethodHeaderContext differentiates from other interfaces.
@@ -11821,6 +12531,16 @@ func (s *MethodHeaderContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *MethodHeaderContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitMethodHeader(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) MethodHeader() (localctx IMethodHeaderContext) {
 	localctx = NewMethodHeaderContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 142, Java8ParserRULE_methodHeader)
@@ -11919,7 +12639,7 @@ func (p *Java8Parser) MethodHeader() (localctx IMethodHeaderContext) {
 type IResultContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsResultContext differentiates from other interfaces.
@@ -11987,6 +12707,16 @@ func (s *ResultContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ResultContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitResult(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) Result() (localctx IResultContext) {
 	localctx = NewResultContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 144, Java8ParserRULE_result)
@@ -12036,7 +12766,7 @@ func (p *Java8Parser) Result() (localctx IResultContext) {
 type IMethodDeclaratorContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsMethodDeclaratorContext differentiates from other interfaces.
@@ -12122,6 +12852,16 @@ func (s *MethodDeclaratorContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *MethodDeclaratorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitMethodDeclarator(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) MethodDeclarator() (localctx IMethodDeclaratorContext) {
 	localctx = NewMethodDeclaratorContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 146, Java8ParserRULE_methodDeclarator)
@@ -12186,7 +12926,7 @@ func (p *Java8Parser) MethodDeclarator() (localctx IMethodDeclaratorContext) {
 type IFormalParameterListContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsFormalParameterListContext differentiates from other interfaces.
@@ -12274,6 +13014,16 @@ func (s *FormalParameterListContext) ExitRule(listener antlr.ParseTreeListener) 
 	}
 }
 
+func (s *FormalParameterListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitFormalParameterList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) FormalParameterList() (localctx IFormalParameterListContext) {
 	localctx = NewFormalParameterListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 148, Java8ParserRULE_formalParameterList)
@@ -12335,7 +13085,7 @@ func (p *Java8Parser) FormalParameterList() (localctx IFormalParameterListContex
 type IFormalParametersContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsFormalParametersContext differentiates from other interfaces.
@@ -12430,6 +13180,16 @@ func (s *FormalParametersContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *FormalParametersContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitFormalParameters(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) FormalParameters() (localctx IFormalParametersContext) {
 	localctx = NewFormalParametersContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 150, Java8ParserRULE_formalParameters)
@@ -12518,7 +13278,7 @@ func (p *Java8Parser) FormalParameters() (localctx IFormalParametersContext) {
 type IFormalParameterContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsFormalParameterContext differentiates from other interfaces.
@@ -12615,6 +13375,16 @@ func (s *FormalParameterContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *FormalParameterContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitFormalParameter(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) FormalParameter() (localctx IFormalParameterContext) {
 	localctx = NewFormalParameterContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 152, Java8ParserRULE_formalParameter)
@@ -12667,7 +13437,7 @@ func (p *Java8Parser) FormalParameter() (localctx IFormalParameterContext) {
 type IVariableModifierContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsVariableModifierContext differentiates from other interfaces.
@@ -12735,6 +13505,16 @@ func (s *VariableModifierContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *VariableModifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitVariableModifier(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) VariableModifier() (localctx IVariableModifierContext) {
 	localctx = NewVariableModifierContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 154, Java8ParserRULE_variableModifier)
@@ -12784,7 +13564,7 @@ func (p *Java8Parser) VariableModifier() (localctx IVariableModifierContext) {
 type ILastFormalParameterContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsLastFormalParameterContext differentiates from other interfaces.
@@ -12918,6 +13698,16 @@ func (s *LastFormalParameterContext) ExitRule(listener antlr.ParseTreeListener) 
 	}
 }
 
+func (s *LastFormalParameterContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitLastFormalParameter(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) LastFormalParameter() (localctx ILastFormalParameterContext) {
 	localctx = NewLastFormalParameterContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 156, Java8ParserRULE_lastFormalParameter)
@@ -13001,7 +13791,7 @@ func (p *Java8Parser) LastFormalParameter() (localctx ILastFormalParameterContex
 type IReceiverParameterContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsReceiverParameterContext differentiates from other interfaces.
@@ -13100,6 +13890,16 @@ func (s *ReceiverParameterContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ReceiverParameterContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitReceiverParameter(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ReceiverParameter() (localctx IReceiverParameterContext) {
 	localctx = NewReceiverParameterContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 158, Java8ParserRULE_receiverParameter)
@@ -13167,7 +13967,7 @@ func (p *Java8Parser) ReceiverParameter() (localctx IReceiverParameterContext) {
 type IThrows_Context interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsThrows_Context differentiates from other interfaces.
@@ -13235,6 +14035,16 @@ func (s *Throws_Context) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *Throws_Context) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitThrows_(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) Throws_() (localctx IThrows_Context) {
 	localctx = NewThrows_Context(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 160, Java8ParserRULE_throws_)
@@ -13272,7 +14082,7 @@ func (p *Java8Parser) Throws_() (localctx IThrows_Context) {
 type IExceptionTypeListContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsExceptionTypeListContext differentiates from other interfaces.
@@ -13357,6 +14167,16 @@ func (s *ExceptionTypeListContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ExceptionTypeListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitExceptionTypeList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ExceptionTypeList() (localctx IExceptionTypeListContext) {
 	localctx = NewExceptionTypeListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 162, Java8ParserRULE_exceptionTypeList)
@@ -13409,7 +14229,7 @@ func (p *Java8Parser) ExceptionTypeList() (localctx IExceptionTypeListContext) {
 type IExceptionTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsExceptionTypeContext differentiates from other interfaces.
@@ -13483,6 +14303,16 @@ func (s *ExceptionTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ExceptionTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitExceptionType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ExceptionType() (localctx IExceptionTypeContext) {
 	localctx = NewExceptionTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 164, Java8ParserRULE_exceptionType)
@@ -13529,7 +14359,7 @@ func (p *Java8Parser) ExceptionType() (localctx IExceptionTypeContext) {
 type IMethodBodyContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsMethodBodyContext differentiates from other interfaces.
@@ -13597,6 +14427,16 @@ func (s *MethodBodyContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *MethodBodyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitMethodBody(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) MethodBody() (localctx IMethodBodyContext) {
 	localctx = NewMethodBodyContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 166, Java8ParserRULE_methodBody)
@@ -13646,7 +14486,7 @@ func (p *Java8Parser) MethodBody() (localctx IMethodBodyContext) {
 type IInstanceInitializerContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsInstanceInitializerContext differentiates from other interfaces.
@@ -13710,6 +14550,16 @@ func (s *InstanceInitializerContext) ExitRule(listener antlr.ParseTreeListener) 
 	}
 }
 
+func (s *InstanceInitializerContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitInstanceInitializer(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) InstanceInitializer() (localctx IInstanceInitializerContext) {
 	localctx = NewInstanceInitializerContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 168, Java8ParserRULE_instanceInitializer)
@@ -13743,7 +14593,7 @@ func (p *Java8Parser) InstanceInitializer() (localctx IInstanceInitializerContex
 type IStaticInitializerContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsStaticInitializerContext differentiates from other interfaces.
@@ -13811,6 +14661,16 @@ func (s *StaticInitializerContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *StaticInitializerContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitStaticInitializer(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) StaticInitializer() (localctx IStaticInitializerContext) {
 	localctx = NewStaticInitializerContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 170, Java8ParserRULE_staticInitializer)
@@ -13848,7 +14708,7 @@ func (p *Java8Parser) StaticInitializer() (localctx IStaticInitializerContext) {
 type IConstructorDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsConstructorDeclarationContext differentiates from other interfaces.
@@ -13955,6 +14815,16 @@ func (s *ConstructorDeclarationContext) ExitRule(listener antlr.ParseTreeListene
 	}
 }
 
+func (s *ConstructorDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitConstructorDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ConstructorDeclaration() (localctx IConstructorDeclarationContext) {
 	localctx = NewConstructorDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 172, Java8ParserRULE_constructorDeclaration)
@@ -14018,7 +14888,7 @@ func (p *Java8Parser) ConstructorDeclaration() (localctx IConstructorDeclaration
 type IConstructorModifierContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsConstructorModifierContext differentiates from other interfaces.
@@ -14094,6 +14964,16 @@ func (s *ConstructorModifierContext) ExitRule(listener antlr.ParseTreeListener) 
 	}
 }
 
+func (s *ConstructorModifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitConstructorModifier(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ConstructorModifier() (localctx IConstructorModifierContext) {
 	localctx = NewConstructorModifierContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 174, Java8ParserRULE_constructorModifier)
@@ -14157,7 +15037,7 @@ func (p *Java8Parser) ConstructorModifier() (localctx IConstructorModifierContex
 type IConstructorDeclaratorContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsConstructorDeclaratorContext differentiates from other interfaces.
@@ -14249,6 +15129,16 @@ func (s *ConstructorDeclaratorContext) ExitRule(listener antlr.ParseTreeListener
 	}
 }
 
+func (s *ConstructorDeclaratorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitConstructorDeclarator(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ConstructorDeclarator() (localctx IConstructorDeclaratorContext) {
 	localctx = NewConstructorDeclaratorContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 176, Java8ParserRULE_constructorDeclarator)
@@ -14313,7 +15203,7 @@ func (p *Java8Parser) ConstructorDeclarator() (localctx IConstructorDeclaratorCo
 type ISimpleTypeNameContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsSimpleTypeNameContext differentiates from other interfaces.
@@ -14371,6 +15261,16 @@ func (s *SimpleTypeNameContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *SimpleTypeNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitSimpleTypeName(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) SimpleTypeName() (localctx ISimpleTypeNameContext) {
 	localctx = NewSimpleTypeNameContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 178, Java8ParserRULE_simpleTypeName)
@@ -14404,7 +15304,7 @@ func (p *Java8Parser) SimpleTypeName() (localctx ISimpleTypeNameContext) {
 type IConstructorBodyContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsConstructorBodyContext differentiates from other interfaces.
@@ -14486,6 +15386,16 @@ func (s *ConstructorBodyContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ConstructorBodyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitConstructorBody(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ConstructorBody() (localctx IConstructorBodyContext) {
 	localctx = NewConstructorBodyContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 180, Java8ParserRULE_constructorBody)
@@ -14545,7 +15455,7 @@ func (p *Java8Parser) ConstructorBody() (localctx IConstructorBodyContext) {
 type IExplicitConstructorInvocationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsExplicitConstructorInvocationContext differentiates from other interfaces.
@@ -14660,6 +15570,16 @@ func (s *ExplicitConstructorInvocationContext) EnterRule(listener antlr.ParseTre
 func (s *ExplicitConstructorInvocationContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitExplicitConstructorInvocation(s)
+	}
+}
+
+func (s *ExplicitConstructorInvocationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitExplicitConstructorInvocation(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -14876,7 +15796,7 @@ func (p *Java8Parser) ExplicitConstructorInvocation() (localctx IExplicitConstru
 type IEnumDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsEnumDeclarationContext differentiates from other interfaces.
@@ -14981,6 +15901,16 @@ func (s *EnumDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *EnumDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitEnumDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) EnumDeclaration() (localctx IEnumDeclarationContext) {
 	localctx = NewEnumDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 184, Java8ParserRULE_enumDeclaration)
@@ -15048,7 +15978,7 @@ func (p *Java8Parser) EnumDeclaration() (localctx IEnumDeclarationContext) {
 type IEnumBodyContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsEnumBodyContext differentiates from other interfaces.
@@ -15134,6 +16064,16 @@ func (s *EnumBodyContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *EnumBodyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitEnumBody(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) EnumBody() (localctx IEnumBodyContext) {
 	localctx = NewEnumBodyContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 186, Java8ParserRULE_enumBody)
@@ -15205,7 +16145,7 @@ func (p *Java8Parser) EnumBody() (localctx IEnumBodyContext) {
 type IEnumConstantListContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsEnumConstantListContext differentiates from other interfaces.
@@ -15290,6 +16230,16 @@ func (s *EnumConstantListContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *EnumConstantListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitEnumConstantList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) EnumConstantList() (localctx IEnumConstantListContext) {
 	localctx = NewEnumConstantListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 188, Java8ParserRULE_enumConstantList)
@@ -15345,7 +16295,7 @@ func (p *Java8Parser) EnumConstantList() (localctx IEnumConstantListContext) {
 type IEnumConstantContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsEnumConstantContext differentiates from other interfaces.
@@ -15454,6 +16404,16 @@ func (s *EnumConstantContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *EnumConstantContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitEnumConstant(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) EnumConstant() (localctx IEnumConstantContext) {
 	localctx = NewEnumConstantContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 190, Java8ParserRULE_enumConstant)
@@ -15539,7 +16499,7 @@ func (p *Java8Parser) EnumConstant() (localctx IEnumConstantContext) {
 type IEnumConstantModifierContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsEnumConstantModifierContext differentiates from other interfaces.
@@ -15603,6 +16563,16 @@ func (s *EnumConstantModifierContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *EnumConstantModifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitEnumConstantModifier(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) EnumConstantModifier() (localctx IEnumConstantModifierContext) {
 	localctx = NewEnumConstantModifierContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 192, Java8ParserRULE_enumConstantModifier)
@@ -15636,7 +16606,7 @@ func (p *Java8Parser) EnumConstantModifier() (localctx IEnumConstantModifierCont
 type IEnumBodyDeclarationsContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsEnumBodyDeclarationsContext differentiates from other interfaces.
@@ -15717,6 +16687,16 @@ func (s *EnumBodyDeclarationsContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *EnumBodyDeclarationsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitEnumBodyDeclarations(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) EnumBodyDeclarations() (localctx IEnumBodyDeclarationsContext) {
 	localctx = NewEnumBodyDeclarationsContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 194, Java8ParserRULE_enumBodyDeclarations)
@@ -15765,7 +16745,7 @@ func (p *Java8Parser) EnumBodyDeclarations() (localctx IEnumBodyDeclarationsCont
 type IInterfaceDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsInterfaceDeclarationContext differentiates from other interfaces.
@@ -15839,6 +16819,16 @@ func (s *InterfaceDeclarationContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *InterfaceDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitInterfaceDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) InterfaceDeclaration() (localctx IInterfaceDeclarationContext) {
 	localctx = NewInterfaceDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 196, Java8ParserRULE_interfaceDeclaration)
@@ -15885,7 +16875,7 @@ func (p *Java8Parser) InterfaceDeclaration() (localctx IInterfaceDeclarationCont
 type INormalInterfaceDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsNormalInterfaceDeclarationContext differentiates from other interfaces.
@@ -16000,6 +16990,16 @@ func (s *NormalInterfaceDeclarationContext) ExitRule(listener antlr.ParseTreeLis
 	}
 }
 
+func (s *NormalInterfaceDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitNormalInterfaceDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) NormalInterfaceDeclaration() (localctx INormalInterfaceDeclarationContext) {
 	localctx = NewNormalInterfaceDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 198, Java8ParserRULE_normalInterfaceDeclaration)
@@ -16078,7 +17078,7 @@ func (p *Java8Parser) NormalInterfaceDeclaration() (localctx INormalInterfaceDec
 type IInterfaceModifierContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsInterfaceModifierContext differentiates from other interfaces.
@@ -16166,6 +17166,16 @@ func (s *InterfaceModifierContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *InterfaceModifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitInterfaceModifier(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) InterfaceModifier() (localctx IInterfaceModifierContext) {
 	localctx = NewInterfaceModifierContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 200, Java8ParserRULE_interfaceModifier)
@@ -16250,7 +17260,7 @@ func (p *Java8Parser) InterfaceModifier() (localctx IInterfaceModifierContext) {
 type IExtendsInterfacesContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsExtendsInterfacesContext differentiates from other interfaces.
@@ -16318,6 +17328,16 @@ func (s *ExtendsInterfacesContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ExtendsInterfacesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitExtendsInterfaces(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ExtendsInterfaces() (localctx IExtendsInterfacesContext) {
 	localctx = NewExtendsInterfacesContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 202, Java8ParserRULE_extendsInterfaces)
@@ -16355,7 +17375,7 @@ func (p *Java8Parser) ExtendsInterfaces() (localctx IExtendsInterfacesContext) {
 type IInterfaceBodyContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsInterfaceBodyContext differentiates from other interfaces.
@@ -16440,6 +17460,16 @@ func (s *InterfaceBodyContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *InterfaceBodyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitInterfaceBody(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) InterfaceBody() (localctx IInterfaceBodyContext) {
 	localctx = NewInterfaceBodyContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 204, Java8ParserRULE_interfaceBody)
@@ -16492,7 +17522,7 @@ func (p *Java8Parser) InterfaceBody() (localctx IInterfaceBodyContext) {
 type IInterfaceMemberDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsInterfaceMemberDeclarationContext differentiates from other interfaces.
@@ -16590,6 +17620,16 @@ func (s *InterfaceMemberDeclarationContext) ExitRule(listener antlr.ParseTreeLis
 	}
 }
 
+func (s *InterfaceMemberDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitInterfaceMemberDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) InterfaceMemberDeclaration() (localctx IInterfaceMemberDeclarationContext) {
 	localctx = NewInterfaceMemberDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 206, Java8ParserRULE_interfaceMemberDeclaration)
@@ -16657,7 +17697,7 @@ func (p *Java8Parser) InterfaceMemberDeclaration() (localctx IInterfaceMemberDec
 type IConstantDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsConstantDeclarationContext differentiates from other interfaces.
@@ -16758,6 +17798,16 @@ func (s *ConstantDeclarationContext) ExitRule(listener antlr.ParseTreeListener) 
 	}
 }
 
+func (s *ConstantDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitConstantDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ConstantDeclaration() (localctx IConstantDeclarationContext) {
 	localctx = NewConstantDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 208, Java8ParserRULE_constantDeclaration)
@@ -16814,7 +17864,7 @@ func (p *Java8Parser) ConstantDeclaration() (localctx IConstantDeclarationContex
 type IConstantModifierContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsConstantModifierContext differentiates from other interfaces.
@@ -16890,6 +17940,16 @@ func (s *ConstantModifierContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ConstantModifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitConstantModifier(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ConstantModifier() (localctx IConstantModifierContext) {
 	localctx = NewConstantModifierContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 210, Java8ParserRULE_constantModifier)
@@ -16953,7 +18013,7 @@ func (p *Java8Parser) ConstantModifier() (localctx IConstantModifierContext) {
 type IInterfaceMethodDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsInterfaceMethodDeclarationContext differentiates from other interfaces.
@@ -17050,6 +18110,16 @@ func (s *InterfaceMethodDeclarationContext) ExitRule(listener antlr.ParseTreeLis
 	}
 }
 
+func (s *InterfaceMethodDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitInterfaceMethodDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) InterfaceMethodDeclaration() (localctx IInterfaceMethodDeclarationContext) {
 	localctx = NewInterfaceMethodDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 212, Java8ParserRULE_interfaceMethodDeclaration)
@@ -17102,7 +18172,7 @@ func (p *Java8Parser) InterfaceMethodDeclaration() (localctx IInterfaceMethodDec
 type IInterfaceMethodModifierContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsInterfaceMethodModifierContext differentiates from other interfaces.
@@ -17186,6 +18256,16 @@ func (s *InterfaceMethodModifierContext) ExitRule(listener antlr.ParseTreeListen
 	}
 }
 
+func (s *InterfaceMethodModifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitInterfaceMethodModifier(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) InterfaceMethodModifier() (localctx IInterfaceMethodModifierContext) {
 	localctx = NewInterfaceMethodModifierContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 214, Java8ParserRULE_interfaceMethodModifier)
@@ -17263,7 +18343,7 @@ func (p *Java8Parser) InterfaceMethodModifier() (localctx IInterfaceMethodModifi
 type IAnnotationTypeDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsAnnotationTypeDeclarationContext differentiates from other interfaces.
@@ -17362,6 +18442,16 @@ func (s *AnnotationTypeDeclarationContext) ExitRule(listener antlr.ParseTreeList
 	}
 }
 
+func (s *AnnotationTypeDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitAnnotationTypeDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) AnnotationTypeDeclaration() (localctx IAnnotationTypeDeclarationContext) {
 	localctx = NewAnnotationTypeDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 216, Java8ParserRULE_annotationTypeDeclaration)
@@ -17425,7 +18515,7 @@ func (p *Java8Parser) AnnotationTypeDeclaration() (localctx IAnnotationTypeDecla
 type IAnnotationTypeBodyContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsAnnotationTypeBodyContext differentiates from other interfaces.
@@ -17510,6 +18600,16 @@ func (s *AnnotationTypeBodyContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *AnnotationTypeBodyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitAnnotationTypeBody(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) AnnotationTypeBody() (localctx IAnnotationTypeBodyContext) {
 	localctx = NewAnnotationTypeBodyContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 218, Java8ParserRULE_annotationTypeBody)
@@ -17562,7 +18662,7 @@ func (p *Java8Parser) AnnotationTypeBody() (localctx IAnnotationTypeBodyContext)
 type IAnnotationTypeMemberDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsAnnotationTypeMemberDeclarationContext differentiates from other interfaces.
@@ -17660,6 +18760,16 @@ func (s *AnnotationTypeMemberDeclarationContext) ExitRule(listener antlr.ParseTr
 	}
 }
 
+func (s *AnnotationTypeMemberDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitAnnotationTypeMemberDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) AnnotationTypeMemberDeclaration() (localctx IAnnotationTypeMemberDeclarationContext) {
 	localctx = NewAnnotationTypeMemberDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 220, Java8ParserRULE_annotationTypeMemberDeclaration)
@@ -17727,7 +18837,7 @@ func (p *Java8Parser) AnnotationTypeMemberDeclaration() (localctx IAnnotationTyp
 type IAnnotationTypeElementDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsAnnotationTypeElementDeclarationContext differentiates from other interfaces.
@@ -17850,6 +18960,16 @@ func (s *AnnotationTypeElementDeclarationContext) ExitRule(listener antlr.ParseT
 	}
 }
 
+func (s *AnnotationTypeElementDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitAnnotationTypeElementDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) AnnotationTypeElementDeclaration() (localctx IAnnotationTypeElementDeclarationContext) {
 	localctx = NewAnnotationTypeElementDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 222, Java8ParserRULE_annotationTypeElementDeclaration)
@@ -17936,7 +19056,7 @@ func (p *Java8Parser) AnnotationTypeElementDeclaration() (localctx IAnnotationTy
 type IAnnotationTypeElementModifierContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsAnnotationTypeElementModifierContext differentiates from other interfaces.
@@ -18008,6 +19128,16 @@ func (s *AnnotationTypeElementModifierContext) ExitRule(listener antlr.ParseTree
 	}
 }
 
+func (s *AnnotationTypeElementModifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitAnnotationTypeElementModifier(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) AnnotationTypeElementModifier() (localctx IAnnotationTypeElementModifierContext) {
 	localctx = NewAnnotationTypeElementModifierContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 224, Java8ParserRULE_annotationTypeElementModifier)
@@ -18064,7 +19194,7 @@ func (p *Java8Parser) AnnotationTypeElementModifier() (localctx IAnnotationTypeE
 type IDefaultValueContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsDefaultValueContext differentiates from other interfaces.
@@ -18132,6 +19262,16 @@ func (s *DefaultValueContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *DefaultValueContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitDefaultValue(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) DefaultValue() (localctx IDefaultValueContext) {
 	localctx = NewDefaultValueContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 226, Java8ParserRULE_defaultValue)
@@ -18169,7 +19309,7 @@ func (p *Java8Parser) DefaultValue() (localctx IDefaultValueContext) {
 type IAnnotationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsAnnotationContext differentiates from other interfaces.
@@ -18253,6 +19393,16 @@ func (s *AnnotationContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *AnnotationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitAnnotation(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) Annotation() (localctx IAnnotationContext) {
 	localctx = NewAnnotationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 228, Java8ParserRULE_annotation)
@@ -18306,7 +19456,7 @@ func (p *Java8Parser) Annotation() (localctx IAnnotationContext) {
 type INormalAnnotationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsNormalAnnotationContext differentiates from other interfaces.
@@ -18392,6 +19542,16 @@ func (s *NormalAnnotationContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *NormalAnnotationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitNormalAnnotation(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) NormalAnnotation() (localctx INormalAnnotationContext) {
 	localctx = NewNormalAnnotationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 230, Java8ParserRULE_normalAnnotation)
@@ -18449,7 +19609,7 @@ func (p *Java8Parser) NormalAnnotation() (localctx INormalAnnotationContext) {
 type IElementValuePairListContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsElementValuePairListContext differentiates from other interfaces.
@@ -18534,6 +19694,16 @@ func (s *ElementValuePairListContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *ElementValuePairListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitElementValuePairList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ElementValuePairList() (localctx IElementValuePairListContext) {
 	localctx = NewElementValuePairListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 232, Java8ParserRULE_elementValuePairList)
@@ -18586,7 +19756,7 @@ func (p *Java8Parser) ElementValuePairList() (localctx IElementValuePairListCont
 type IElementValuePairContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsElementValuePairContext differentiates from other interfaces.
@@ -18658,6 +19828,16 @@ func (s *ElementValuePairContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ElementValuePairContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitElementValuePair(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ElementValuePair() (localctx IElementValuePairContext) {
 	localctx = NewElementValuePairContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 234, Java8ParserRULE_elementValuePair)
@@ -18699,7 +19879,7 @@ func (p *Java8Parser) ElementValuePair() (localctx IElementValuePairContext) {
 type IElementValueContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsElementValueContext differentiates from other interfaces.
@@ -18783,6 +19963,16 @@ func (s *ElementValueContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ElementValueContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitElementValue(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ElementValue() (localctx IElementValueContext) {
 	localctx = NewElementValueContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 236, Java8ParserRULE_elementValue)
@@ -18836,7 +20026,7 @@ func (p *Java8Parser) ElementValue() (localctx IElementValueContext) {
 type IElementValueArrayInitializerContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsElementValueArrayInitializerContext differentiates from other interfaces.
@@ -18912,6 +20102,16 @@ func (s *ElementValueArrayInitializerContext) ExitRule(listener antlr.ParseTreeL
 	}
 }
 
+func (s *ElementValueArrayInitializerContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitElementValueArrayInitializer(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ElementValueArrayInitializer() (localctx IElementValueArrayInitializerContext) {
 	localctx = NewElementValueArrayInitializerContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 238, Java8ParserRULE_elementValueArrayInitializer)
@@ -18972,7 +20172,7 @@ func (p *Java8Parser) ElementValueArrayInitializer() (localctx IElementValueArra
 type IElementValueListContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsElementValueListContext differentiates from other interfaces.
@@ -19057,6 +20257,16 @@ func (s *ElementValueListContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ElementValueListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitElementValueList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ElementValueList() (localctx IElementValueListContext) {
 	localctx = NewElementValueListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 240, Java8ParserRULE_elementValueList)
@@ -19112,7 +20322,7 @@ func (p *Java8Parser) ElementValueList() (localctx IElementValueListContext) {
 type IMarkerAnnotationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsMarkerAnnotationContext differentiates from other interfaces.
@@ -19180,6 +20390,16 @@ func (s *MarkerAnnotationContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *MarkerAnnotationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitMarkerAnnotation(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) MarkerAnnotation() (localctx IMarkerAnnotationContext) {
 	localctx = NewMarkerAnnotationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 242, Java8ParserRULE_markerAnnotation)
@@ -19217,7 +20437,7 @@ func (p *Java8Parser) MarkerAnnotation() (localctx IMarkerAnnotationContext) {
 type ISingleElementAnnotationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsSingleElementAnnotationContext differentiates from other interfaces.
@@ -19303,6 +20523,16 @@ func (s *SingleElementAnnotationContext) ExitRule(listener antlr.ParseTreeListen
 	}
 }
 
+func (s *SingleElementAnnotationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitSingleElementAnnotation(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) SingleElementAnnotation() (localctx ISingleElementAnnotationContext) {
 	localctx = NewSingleElementAnnotationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 244, Java8ParserRULE_singleElementAnnotation)
@@ -19352,7 +20582,7 @@ func (p *Java8Parser) SingleElementAnnotation() (localctx ISingleElementAnnotati
 type IArrayInitializerContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsArrayInitializerContext differentiates from other interfaces.
@@ -19428,6 +20658,16 @@ func (s *ArrayInitializerContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ArrayInitializerContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitArrayInitializer(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ArrayInitializer() (localctx IArrayInitializerContext) {
 	localctx = NewArrayInitializerContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 246, Java8ParserRULE_arrayInitializer)
@@ -19488,7 +20728,7 @@ func (p *Java8Parser) ArrayInitializer() (localctx IArrayInitializerContext) {
 type IVariableInitializerListContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsVariableInitializerListContext differentiates from other interfaces.
@@ -19573,6 +20813,16 @@ func (s *VariableInitializerListContext) ExitRule(listener antlr.ParseTreeListen
 	}
 }
 
+func (s *VariableInitializerListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitVariableInitializerList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) VariableInitializerList() (localctx IVariableInitializerListContext) {
 	localctx = NewVariableInitializerListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 248, Java8ParserRULE_variableInitializerList)
@@ -19628,7 +20878,7 @@ func (p *Java8Parser) VariableInitializerList() (localctx IVariableInitializerLi
 type IBlockContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsBlockContext differentiates from other interfaces.
@@ -19700,6 +20950,16 @@ func (s *BlockContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *BlockContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitBlock(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) Block() (localctx IBlockContext) {
 	localctx = NewBlockContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 250, Java8ParserRULE_block)
@@ -19749,7 +21009,7 @@ func (p *Java8Parser) Block() (localctx IBlockContext) {
 type IBlockStatementsContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsBlockStatementsContext differentiates from other interfaces.
@@ -19826,6 +21086,16 @@ func (s *BlockStatementsContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *BlockStatementsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitBlockStatements(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) BlockStatements() (localctx IBlockStatementsContext) {
 	localctx = NewBlockStatementsContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 252, Java8ParserRULE_blockStatements)
@@ -19870,7 +21140,7 @@ func (p *Java8Parser) BlockStatements() (localctx IBlockStatementsContext) {
 type IBlockStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsBlockStatementContext differentiates from other interfaces.
@@ -19954,6 +21224,16 @@ func (s *BlockStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *BlockStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitBlockStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) BlockStatement() (localctx IBlockStatementContext) {
 	localctx = NewBlockStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 254, Java8ParserRULE_blockStatement)
@@ -20007,7 +21287,7 @@ func (p *Java8Parser) BlockStatement() (localctx IBlockStatementContext) {
 type ILocalVariableDeclarationStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsLocalVariableDeclarationStatementContext differentiates from other interfaces.
@@ -20075,6 +21355,16 @@ func (s *LocalVariableDeclarationStatementContext) ExitRule(listener antlr.Parse
 	}
 }
 
+func (s *LocalVariableDeclarationStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitLocalVariableDeclarationStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) LocalVariableDeclarationStatement() (localctx ILocalVariableDeclarationStatementContext) {
 	localctx = NewLocalVariableDeclarationStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 256, Java8ParserRULE_localVariableDeclarationStatement)
@@ -20112,7 +21402,7 @@ func (p *Java8Parser) LocalVariableDeclarationStatement() (localctx ILocalVariab
 type ILocalVariableDeclarationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsLocalVariableDeclarationContext differentiates from other interfaces.
@@ -20209,6 +21499,16 @@ func (s *LocalVariableDeclarationContext) ExitRule(listener antlr.ParseTreeListe
 	}
 }
 
+func (s *LocalVariableDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitLocalVariableDeclaration(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) LocalVariableDeclaration() (localctx ILocalVariableDeclarationContext) {
 	localctx = NewLocalVariableDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 258, Java8ParserRULE_localVariableDeclaration)
@@ -20261,7 +21561,7 @@ func (p *Java8Parser) LocalVariableDeclaration() (localctx ILocalVariableDeclara
 type IStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsStatementContext differentiates from other interfaces.
@@ -20375,6 +21675,16 @@ func (s *StatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *StatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) Statement() (localctx IStatementContext) {
 	localctx = NewStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 260, Java8ParserRULE_statement)
@@ -20449,7 +21759,7 @@ func (p *Java8Parser) Statement() (localctx IStatementContext) {
 type IStatementNoShortIfContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsStatementNoShortIfContext differentiates from other interfaces.
@@ -20553,6 +21863,16 @@ func (s *StatementNoShortIfContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *StatementNoShortIfContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitStatementNoShortIf(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) StatementNoShortIf() (localctx IStatementNoShortIfContext) {
 	localctx = NewStatementNoShortIfContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 262, Java8ParserRULE_statementNoShortIf)
@@ -20620,7 +21940,7 @@ func (p *Java8Parser) StatementNoShortIf() (localctx IStatementNoShortIfContext)
 type IStatementWithoutTrailingSubstatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsStatementWithoutTrailingSubstatementContext differentiates from other interfaces.
@@ -20794,6 +22114,16 @@ func (s *StatementWithoutTrailingSubstatementContext) ExitRule(listener antlr.Pa
 	}
 }
 
+func (s *StatementWithoutTrailingSubstatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitStatementWithoutTrailingSubstatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) StatementWithoutTrailingSubstatement() (localctx IStatementWithoutTrailingSubstatementContext) {
 	localctx = NewStatementWithoutTrailingSubstatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 264, Java8ParserRULE_statementWithoutTrailingSubstatement)
@@ -20913,7 +22243,7 @@ func (p *Java8Parser) StatementWithoutTrailingSubstatement() (localctx IStatemen
 type IEmptyStatement_Context interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsEmptyStatement_Context differentiates from other interfaces.
@@ -20971,6 +22301,16 @@ func (s *EmptyStatement_Context) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *EmptyStatement_Context) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitEmptyStatement_(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) EmptyStatement_() (localctx IEmptyStatement_Context) {
 	localctx = NewEmptyStatement_Context(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 266, Java8ParserRULE_emptyStatement_)
@@ -21004,7 +22344,7 @@ func (p *Java8Parser) EmptyStatement_() (localctx IEmptyStatement_Context) {
 type ILabeledStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsLabeledStatementContext differentiates from other interfaces.
@@ -21076,6 +22416,16 @@ func (s *LabeledStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *LabeledStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitLabeledStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) LabeledStatement() (localctx ILabeledStatementContext) {
 	localctx = NewLabeledStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 268, Java8ParserRULE_labeledStatement)
@@ -21117,7 +22467,7 @@ func (p *Java8Parser) LabeledStatement() (localctx ILabeledStatementContext) {
 type ILabeledStatementNoShortIfContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsLabeledStatementNoShortIfContext differentiates from other interfaces.
@@ -21189,6 +22539,16 @@ func (s *LabeledStatementNoShortIfContext) ExitRule(listener antlr.ParseTreeList
 	}
 }
 
+func (s *LabeledStatementNoShortIfContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitLabeledStatementNoShortIf(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) LabeledStatementNoShortIf() (localctx ILabeledStatementNoShortIfContext) {
 	localctx = NewLabeledStatementNoShortIfContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 270, Java8ParserRULE_labeledStatementNoShortIf)
@@ -21230,7 +22590,7 @@ func (p *Java8Parser) LabeledStatementNoShortIf() (localctx ILabeledStatementNoS
 type IExpressionStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsExpressionStatementContext differentiates from other interfaces.
@@ -21298,6 +22658,16 @@ func (s *ExpressionStatementContext) ExitRule(listener antlr.ParseTreeListener) 
 	}
 }
 
+func (s *ExpressionStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitExpressionStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ExpressionStatement() (localctx IExpressionStatementContext) {
 	localctx = NewExpressionStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 272, Java8ParserRULE_expressionStatement)
@@ -21335,7 +22705,7 @@ func (p *Java8Parser) ExpressionStatement() (localctx IExpressionStatementContex
 type IStatementExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsStatementExpressionContext differentiates from other interfaces.
@@ -21459,6 +22829,16 @@ func (s *StatementExpressionContext) ExitRule(listener antlr.ParseTreeListener) 
 	}
 }
 
+func (s *StatementExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitStatementExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) StatementExpression() (localctx IStatementExpressionContext) {
 	localctx = NewStatementExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 274, Java8ParserRULE_statementExpression)
@@ -21540,7 +22920,7 @@ func (p *Java8Parser) StatementExpression() (localctx IStatementExpressionContex
 type IIfThenStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsIfThenStatementContext differentiates from other interfaces.
@@ -21626,6 +23006,16 @@ func (s *IfThenStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *IfThenStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitIfThenStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) IfThenStatement() (localctx IIfThenStatementContext) {
 	localctx = NewIfThenStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 276, Java8ParserRULE_ifThenStatement)
@@ -21675,7 +23065,7 @@ func (p *Java8Parser) IfThenStatement() (localctx IIfThenStatementContext) {
 type IIfThenElseStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsIfThenElseStatementContext differentiates from other interfaces.
@@ -21775,6 +23165,16 @@ func (s *IfThenElseStatementContext) ExitRule(listener antlr.ParseTreeListener) 
 	}
 }
 
+func (s *IfThenElseStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitIfThenElseStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) IfThenElseStatement() (localctx IIfThenElseStatementContext) {
 	localctx = NewIfThenElseStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 278, Java8ParserRULE_ifThenElseStatement)
@@ -21832,7 +23232,7 @@ func (p *Java8Parser) IfThenElseStatement() (localctx IIfThenElseStatementContex
 type IIfThenElseStatementNoShortIfContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsIfThenElseStatementNoShortIfContext differentiates from other interfaces.
@@ -21935,6 +23335,16 @@ func (s *IfThenElseStatementNoShortIfContext) ExitRule(listener antlr.ParseTreeL
 	}
 }
 
+func (s *IfThenElseStatementNoShortIfContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitIfThenElseStatementNoShortIf(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) IfThenElseStatementNoShortIf() (localctx IIfThenElseStatementNoShortIfContext) {
 	localctx = NewIfThenElseStatementNoShortIfContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 280, Java8ParserRULE_ifThenElseStatementNoShortIf)
@@ -21992,7 +23402,7 @@ func (p *Java8Parser) IfThenElseStatementNoShortIf() (localctx IIfThenElseStatem
 type IAssertStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsAssertStatementContext differentiates from other interfaces.
@@ -22081,6 +23491,16 @@ func (s *AssertStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *AssertStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitAssertStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) AssertStatement() (localctx IAssertStatementContext) {
 	localctx = NewAssertStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 282, Java8ParserRULE_assertStatement)
@@ -22151,7 +23571,7 @@ func (p *Java8Parser) AssertStatement() (localctx IAssertStatementContext) {
 type ISwitchStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsSwitchStatementContext differentiates from other interfaces.
@@ -22237,6 +23657,16 @@ func (s *SwitchStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *SwitchStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitSwitchStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) SwitchStatement() (localctx ISwitchStatementContext) {
 	localctx = NewSwitchStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 284, Java8ParserRULE_switchStatement)
@@ -22286,7 +23716,7 @@ func (p *Java8Parser) SwitchStatement() (localctx ISwitchStatementContext) {
 type ISwitchBlockContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsSwitchBlockContext differentiates from other interfaces.
@@ -22394,6 +23824,16 @@ func (s *SwitchBlockContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *SwitchBlockContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitSwitchBlock(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) SwitchBlock() (localctx ISwitchBlockContext) {
 	localctx = NewSwitchBlockContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 286, Java8ParserRULE_switchBlock)
@@ -22464,7 +23904,7 @@ func (p *Java8Parser) SwitchBlock() (localctx ISwitchBlockContext) {
 type ISwitchBlockStatementGroupContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsSwitchBlockStatementGroupContext differentiates from other interfaces.
@@ -22538,6 +23978,16 @@ func (s *SwitchBlockStatementGroupContext) ExitRule(listener antlr.ParseTreeList
 	}
 }
 
+func (s *SwitchBlockStatementGroupContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitSwitchBlockStatementGroup(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) SwitchBlockStatementGroup() (localctx ISwitchBlockStatementGroupContext) {
 	localctx = NewSwitchBlockStatementGroupContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 288, Java8ParserRULE_switchBlockStatementGroup)
@@ -22575,7 +24025,7 @@ func (p *Java8Parser) SwitchBlockStatementGroup() (localctx ISwitchBlockStatemen
 type ISwitchLabelsContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsSwitchLabelsContext differentiates from other interfaces.
@@ -22652,6 +24102,16 @@ func (s *SwitchLabelsContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *SwitchLabelsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitSwitchLabels(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) SwitchLabels() (localctx ISwitchLabelsContext) {
 	localctx = NewSwitchLabelsContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 290, Java8ParserRULE_switchLabels)
@@ -22700,7 +24160,7 @@ func (p *Java8Parser) SwitchLabels() (localctx ISwitchLabelsContext) {
 type ISwitchLabelContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsSwitchLabelContext differentiates from other interfaces.
@@ -22786,6 +24246,16 @@ func (s *SwitchLabelContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *SwitchLabelContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitSwitchLabel(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) SwitchLabel() (localctx ISwitchLabelContext) {
 	localctx = NewSwitchLabelContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 292, Java8ParserRULE_switchLabel)
@@ -22859,7 +24329,7 @@ func (p *Java8Parser) SwitchLabel() (localctx ISwitchLabelContext) {
 type IEnumConstantNameContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsEnumConstantNameContext differentiates from other interfaces.
@@ -22917,6 +24387,16 @@ func (s *EnumConstantNameContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *EnumConstantNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitEnumConstantName(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) EnumConstantName() (localctx IEnumConstantNameContext) {
 	localctx = NewEnumConstantNameContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 294, Java8ParserRULE_enumConstantName)
@@ -22950,7 +24430,7 @@ func (p *Java8Parser) EnumConstantName() (localctx IEnumConstantNameContext) {
 type IWhileStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsWhileStatementContext differentiates from other interfaces.
@@ -23036,6 +24516,16 @@ func (s *WhileStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *WhileStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitWhileStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) WhileStatement() (localctx IWhileStatementContext) {
 	localctx = NewWhileStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 296, Java8ParserRULE_whileStatement)
@@ -23085,7 +24575,7 @@ func (p *Java8Parser) WhileStatement() (localctx IWhileStatementContext) {
 type IWhileStatementNoShortIfContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsWhileStatementNoShortIfContext differentiates from other interfaces.
@@ -23171,6 +24661,16 @@ func (s *WhileStatementNoShortIfContext) ExitRule(listener antlr.ParseTreeListen
 	}
 }
 
+func (s *WhileStatementNoShortIfContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitWhileStatementNoShortIf(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) WhileStatementNoShortIf() (localctx IWhileStatementNoShortIfContext) {
 	localctx = NewWhileStatementNoShortIfContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 298, Java8ParserRULE_whileStatementNoShortIf)
@@ -23220,7 +24720,7 @@ func (p *Java8Parser) WhileStatementNoShortIf() (localctx IWhileStatementNoShort
 type IDoStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsDoStatementContext differentiates from other interfaces.
@@ -23314,6 +24814,16 @@ func (s *DoStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *DoStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitDoStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) DoStatement() (localctx IDoStatementContext) {
 	localctx = NewDoStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 300, Java8ParserRULE_doStatement)
@@ -23371,7 +24881,7 @@ func (p *Java8Parser) DoStatement() (localctx IDoStatementContext) {
 type IForStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsForStatementContext differentiates from other interfaces.
@@ -23445,6 +24955,16 @@ func (s *ForStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ForStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitForStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ForStatement() (localctx IForStatementContext) {
 	localctx = NewForStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 302, Java8ParserRULE_forStatement)
@@ -23491,7 +25011,7 @@ func (p *Java8Parser) ForStatement() (localctx IForStatementContext) {
 type IForStatementNoShortIfContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsForStatementNoShortIfContext differentiates from other interfaces.
@@ -23565,6 +25085,16 @@ func (s *ForStatementNoShortIfContext) ExitRule(listener antlr.ParseTreeListener
 	}
 }
 
+func (s *ForStatementNoShortIfContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitForStatementNoShortIf(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ForStatementNoShortIf() (localctx IForStatementNoShortIfContext) {
 	localctx = NewForStatementNoShortIfContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 304, Java8ParserRULE_forStatementNoShortIf)
@@ -23611,7 +25141,7 @@ func (p *Java8Parser) ForStatementNoShortIf() (localctx IForStatementNoShortIfCo
 type IBasicForStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsBasicForStatementContext differentiates from other interfaces.
@@ -23725,6 +25255,16 @@ func (s *BasicForStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *BasicForStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitBasicForStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) BasicForStatement() (localctx IBasicForStatementContext) {
 	localctx = NewBasicForStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 306, Java8ParserRULE_basicForStatement)
@@ -23812,7 +25352,7 @@ func (p *Java8Parser) BasicForStatement() (localctx IBasicForStatementContext) {
 type IBasicForStatementNoShortIfContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsBasicForStatementNoShortIfContext differentiates from other interfaces.
@@ -23926,6 +25466,16 @@ func (s *BasicForStatementNoShortIfContext) ExitRule(listener antlr.ParseTreeLis
 	}
 }
 
+func (s *BasicForStatementNoShortIfContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitBasicForStatementNoShortIf(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) BasicForStatementNoShortIf() (localctx IBasicForStatementNoShortIfContext) {
 	localctx = NewBasicForStatementNoShortIfContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 308, Java8ParserRULE_basicForStatementNoShortIf)
@@ -24013,7 +25563,7 @@ func (p *Java8Parser) BasicForStatementNoShortIf() (localctx IBasicForStatementN
 type IForInitContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsForInitContext differentiates from other interfaces.
@@ -24087,6 +25637,16 @@ func (s *ForInitContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ForInitContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitForInit(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ForInit() (localctx IForInitContext) {
 	localctx = NewForInitContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 310, Java8ParserRULE_forInit)
@@ -24133,7 +25693,7 @@ func (p *Java8Parser) ForInit() (localctx IForInitContext) {
 type IForUpdateContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsForUpdateContext differentiates from other interfaces.
@@ -24197,6 +25757,16 @@ func (s *ForUpdateContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ForUpdateContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitForUpdate(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ForUpdate() (localctx IForUpdateContext) {
 	localctx = NewForUpdateContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 312, Java8ParserRULE_forUpdate)
@@ -24230,7 +25800,7 @@ func (p *Java8Parser) ForUpdate() (localctx IForUpdateContext) {
 type IStatementExpressionListContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsStatementExpressionListContext differentiates from other interfaces.
@@ -24315,6 +25885,16 @@ func (s *StatementExpressionListContext) ExitRule(listener antlr.ParseTreeListen
 	}
 }
 
+func (s *StatementExpressionListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitStatementExpressionList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) StatementExpressionList() (localctx IStatementExpressionListContext) {
 	localctx = NewStatementExpressionListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 314, Java8ParserRULE_statementExpressionList)
@@ -24367,7 +25947,7 @@ func (p *Java8Parser) StatementExpressionList() (localctx IStatementExpressionLi
 type IEnhancedForStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsEnhancedForStatementContext differentiates from other interfaces.
@@ -24500,6 +26080,16 @@ func (s *EnhancedForStatementContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *EnhancedForStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitEnhancedForStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) EnhancedForStatement() (localctx IEnhancedForStatementContext) {
 	localctx = NewEnhancedForStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 316, Java8ParserRULE_enhancedForStatement)
@@ -24576,7 +26166,7 @@ func (p *Java8Parser) EnhancedForStatement() (localctx IEnhancedForStatementCont
 type IEnhancedForStatementNoShortIfContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsEnhancedForStatementNoShortIfContext differentiates from other interfaces.
@@ -24709,6 +26299,16 @@ func (s *EnhancedForStatementNoShortIfContext) ExitRule(listener antlr.ParseTree
 	}
 }
 
+func (s *EnhancedForStatementNoShortIfContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitEnhancedForStatementNoShortIf(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) EnhancedForStatementNoShortIf() (localctx IEnhancedForStatementNoShortIfContext) {
 	localctx = NewEnhancedForStatementNoShortIfContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 318, Java8ParserRULE_enhancedForStatementNoShortIf)
@@ -24785,7 +26385,7 @@ func (p *Java8Parser) EnhancedForStatementNoShortIf() (localctx IEnhancedForStat
 type IBreakStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsBreakStatementContext differentiates from other interfaces.
@@ -24851,6 +26451,16 @@ func (s *BreakStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *BreakStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitBreakStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) BreakStatement() (localctx IBreakStatementContext) {
 	localctx = NewBreakStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 320, Java8ParserRULE_breakStatement)
@@ -24900,7 +26510,7 @@ func (p *Java8Parser) BreakStatement() (localctx IBreakStatementContext) {
 type IContinueStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsContinueStatementContext differentiates from other interfaces.
@@ -24966,6 +26576,16 @@ func (s *ContinueStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ContinueStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitContinueStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ContinueStatement() (localctx IContinueStatementContext) {
 	localctx = NewContinueStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 322, Java8ParserRULE_continueStatement)
@@ -25015,7 +26635,7 @@ func (p *Java8Parser) ContinueStatement() (localctx IContinueStatementContext) {
 type IReturnStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsReturnStatementContext differentiates from other interfaces.
@@ -25087,6 +26707,16 @@ func (s *ReturnStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ReturnStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitReturnStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ReturnStatement() (localctx IReturnStatementContext) {
 	localctx = NewReturnStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 324, Java8ParserRULE_returnStatement)
@@ -25136,7 +26766,7 @@ func (p *Java8Parser) ReturnStatement() (localctx IReturnStatementContext) {
 type IThrowStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsThrowStatementContext differentiates from other interfaces.
@@ -25208,6 +26838,16 @@ func (s *ThrowStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ThrowStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitThrowStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ThrowStatement() (localctx IThrowStatementContext) {
 	localctx = NewThrowStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 326, Java8ParserRULE_throwStatement)
@@ -25249,7 +26889,7 @@ func (p *Java8Parser) ThrowStatement() (localctx IThrowStatementContext) {
 type ISynchronizedStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsSynchronizedStatementContext differentiates from other interfaces.
@@ -25335,6 +26975,16 @@ func (s *SynchronizedStatementContext) ExitRule(listener antlr.ParseTreeListener
 	}
 }
 
+func (s *SynchronizedStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitSynchronizedStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) SynchronizedStatement() (localctx ISynchronizedStatementContext) {
 	localctx = NewSynchronizedStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 328, Java8ParserRULE_synchronizedStatement)
@@ -25384,7 +27034,7 @@ func (p *Java8Parser) SynchronizedStatement() (localctx ISynchronizedStatementCo
 type ITryStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsTryStatementContext differentiates from other interfaces.
@@ -25482,6 +27132,16 @@ func (s *TryStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TryStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitTryStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) TryStatement() (localctx ITryStatementContext) {
 	localctx = NewTryStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 330, Java8ParserRULE_tryStatement)
@@ -25563,7 +27223,7 @@ func (p *Java8Parser) TryStatement() (localctx ITryStatementContext) {
 type ICatchesContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsCatchesContext differentiates from other interfaces.
@@ -25640,6 +27300,16 @@ func (s *CatchesContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *CatchesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitCatches(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) Catches() (localctx ICatchesContext) {
 	localctx = NewCatchesContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 332, Java8ParserRULE_catches)
@@ -25688,7 +27358,7 @@ func (p *Java8Parser) Catches() (localctx ICatchesContext) {
 type ICatchClauseContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsCatchClauseContext differentiates from other interfaces.
@@ -25774,6 +27444,16 @@ func (s *CatchClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *CatchClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitCatchClause(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) CatchClause() (localctx ICatchClauseContext) {
 	localctx = NewCatchClauseContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 334, Java8ParserRULE_catchClause)
@@ -25823,7 +27503,7 @@ func (p *Java8Parser) CatchClause() (localctx ICatchClauseContext) {
 type ICatchFormalParameterContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsCatchFormalParameterContext differentiates from other interfaces.
@@ -25920,6 +27600,16 @@ func (s *CatchFormalParameterContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *CatchFormalParameterContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitCatchFormalParameter(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) CatchFormalParameter() (localctx ICatchFormalParameterContext) {
 	localctx = NewCatchFormalParameterContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 336, Java8ParserRULE_catchFormalParameter)
@@ -25972,7 +27662,7 @@ func (p *Java8Parser) CatchFormalParameter() (localctx ICatchFormalParameterCont
 type ICatchTypeContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsCatchTypeContext differentiates from other interfaces.
@@ -26067,6 +27757,16 @@ func (s *CatchTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *CatchTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitCatchType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) CatchType() (localctx ICatchTypeContext) {
 	localctx = NewCatchTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 338, Java8ParserRULE_catchType)
@@ -26119,7 +27819,7 @@ func (p *Java8Parser) CatchType() (localctx ICatchTypeContext) {
 type IFinally_Context interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsFinally_Context differentiates from other interfaces.
@@ -26187,6 +27887,16 @@ func (s *Finally_Context) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *Finally_Context) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitFinally_(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) Finally_() (localctx IFinally_Context) {
 	localctx = NewFinally_Context(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 340, Java8ParserRULE_finally_)
@@ -26224,7 +27934,7 @@ func (p *Java8Parser) Finally_() (localctx IFinally_Context) {
 type ITryWithResourcesStatementContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsTryWithResourcesStatementContext differentiates from other interfaces.
@@ -26322,6 +28032,16 @@ func (s *TryWithResourcesStatementContext) ExitRule(listener antlr.ParseTreeList
 	}
 }
 
+func (s *TryWithResourcesStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitTryWithResourcesStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) TryWithResourcesStatement() (localctx ITryWithResourcesStatementContext) {
 	localctx = NewTryWithResourcesStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 342, Java8ParserRULE_tryWithResourcesStatement)
@@ -26386,7 +28106,7 @@ func (p *Java8Parser) TryWithResourcesStatement() (localctx ITryWithResourcesSta
 type IResourceSpecificationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsResourceSpecificationContext differentiates from other interfaces.
@@ -26462,6 +28182,16 @@ func (s *ResourceSpecificationContext) ExitRule(listener antlr.ParseTreeListener
 	}
 }
 
+func (s *ResourceSpecificationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitResourceSpecification(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ResourceSpecification() (localctx IResourceSpecificationContext) {
 	localctx = NewResourceSpecificationContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 344, Java8ParserRULE_resourceSpecification)
@@ -26515,7 +28245,7 @@ func (p *Java8Parser) ResourceSpecification() (localctx IResourceSpecificationCo
 type IResourceListContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsResourceListContext differentiates from other interfaces.
@@ -26600,6 +28330,16 @@ func (s *ResourceListContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ResourceListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitResourceList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ResourceList() (localctx IResourceListContext) {
 	localctx = NewResourceListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 346, Java8ParserRULE_resourceList)
@@ -26655,7 +28395,7 @@ func (p *Java8Parser) ResourceList() (localctx IResourceListContext) {
 type IResourceContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsResourceContext differentiates from other interfaces.
@@ -26766,6 +28506,16 @@ func (s *ResourceContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ResourceContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitResource(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) Resource() (localctx IResourceContext) {
 	localctx = NewResourceContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 348, Java8ParserRULE_resource)
@@ -26826,7 +28576,7 @@ func (p *Java8Parser) Resource() (localctx IResourceContext) {
 type IPrimaryContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPrimaryContext differentiates from other interfaces.
@@ -26923,6 +28673,16 @@ func (s *PrimaryContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PrimaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPrimary(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) Primary() (localctx IPrimaryContext) {
 	localctx = NewPrimaryContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 350, Java8ParserRULE_primary)
@@ -26986,7 +28746,7 @@ func (p *Java8Parser) Primary() (localctx IPrimaryContext) {
 type IPrimaryNoNewArrayContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPrimaryNoNewArrayContext differentiates from other interfaces.
@@ -27160,6 +28920,16 @@ func (s *PrimaryNoNewArrayContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PrimaryNoNewArrayContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPrimaryNoNewArray(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) PrimaryNoNewArray() (localctx IPrimaryNoNewArrayContext) {
 	localctx = NewPrimaryNoNewArrayContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 352, Java8ParserRULE_primaryNoNewArray)
@@ -27320,7 +29090,7 @@ func (p *Java8Parser) PrimaryNoNewArray() (localctx IPrimaryNoNewArrayContext) {
 type IPrimaryNoNewArray_lf_arrayAccessContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPrimaryNoNewArray_lf_arrayAccessContext differentiates from other interfaces.
@@ -27373,6 +29143,16 @@ func (s *PrimaryNoNewArray_lf_arrayAccessContext) ExitRule(listener antlr.ParseT
 	}
 }
 
+func (s *PrimaryNoNewArray_lf_arrayAccessContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPrimaryNoNewArray_lf_arrayAccess(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) PrimaryNoNewArray_lf_arrayAccess() (localctx IPrimaryNoNewArray_lf_arrayAccessContext) {
 	localctx = NewPrimaryNoNewArray_lf_arrayAccessContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 354, Java8ParserRULE_primaryNoNewArray_lf_arrayAccess)
@@ -27402,7 +29182,7 @@ func (p *Java8Parser) PrimaryNoNewArray_lf_arrayAccess() (localctx IPrimaryNoNew
 type IPrimaryNoNewArray_lfno_arrayAccessContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPrimaryNoNewArray_lfno_arrayAccessContext differentiates from other interfaces.
@@ -27566,6 +29346,16 @@ func (s *PrimaryNoNewArray_lfno_arrayAccessContext) ExitRule(listener antlr.Pars
 	}
 }
 
+func (s *PrimaryNoNewArray_lfno_arrayAccessContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPrimaryNoNewArray_lfno_arrayAccess(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) PrimaryNoNewArray_lfno_arrayAccess() (localctx IPrimaryNoNewArray_lfno_arrayAccessContext) {
 	localctx = NewPrimaryNoNewArray_lfno_arrayAccessContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 356, Java8ParserRULE_primaryNoNewArray_lfno_arrayAccess)
@@ -27719,7 +29509,7 @@ func (p *Java8Parser) PrimaryNoNewArray_lfno_arrayAccess() (localctx IPrimaryNoN
 type IPrimaryNoNewArray_lf_primaryContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPrimaryNoNewArray_lf_primaryContext differentiates from other interfaces.
@@ -27823,6 +29613,16 @@ func (s *PrimaryNoNewArray_lf_primaryContext) ExitRule(listener antlr.ParseTreeL
 	}
 }
 
+func (s *PrimaryNoNewArray_lf_primaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPrimaryNoNewArray_lf_primary(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) PrimaryNoNewArray_lf_primary() (localctx IPrimaryNoNewArray_lf_primaryContext) {
 	localctx = NewPrimaryNoNewArray_lf_primaryContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 358, Java8ParserRULE_primaryNoNewArray_lf_primary)
@@ -27890,7 +29690,7 @@ func (p *Java8Parser) PrimaryNoNewArray_lf_primary() (localctx IPrimaryNoNewArra
 type IPrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primaryContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primaryContext differentiates from other interfaces.
@@ -27946,6 +29746,16 @@ func (s *PrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primaryContext) ExitRule
 	}
 }
 
+func (s *PrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) PrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary() (localctx IPrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primaryContext) {
 	localctx = NewPrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primaryContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 360, Java8ParserRULE_primaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary)
@@ -27975,7 +29785,7 @@ func (p *Java8Parser) PrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary() (
 type IPrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primaryContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primaryContext differentiates from other interfaces.
@@ -28072,6 +29882,16 @@ func (s *PrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primaryContext) ExitRu
 	}
 }
 
+func (s *PrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) PrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary() (localctx IPrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primaryContext) {
 	localctx = NewPrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primaryContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 362, Java8ParserRULE_primaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary)
@@ -28132,7 +29952,7 @@ func (p *Java8Parser) PrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary()
 type IPrimaryNoNewArray_lfno_primaryContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPrimaryNoNewArray_lfno_primaryContext differentiates from other interfaces.
@@ -28313,6 +30133,16 @@ func (s *PrimaryNoNewArray_lfno_primaryContext) EnterRule(listener antlr.ParseTr
 func (s *PrimaryNoNewArray_lfno_primaryContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitPrimaryNoNewArray_lfno_primary(s)
+	}
+}
+
+func (s *PrimaryNoNewArray_lfno_primaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPrimaryNoNewArray_lfno_primary(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -28509,7 +30339,7 @@ func (p *Java8Parser) PrimaryNoNewArray_lfno_primary() (localctx IPrimaryNoNewAr
 type IPrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primaryContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primaryContext differentiates from other interfaces.
@@ -28565,6 +30395,16 @@ func (s *PrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primaryContext) Exit
 	}
 }
 
+func (s *PrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) PrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary() (localctx IPrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primaryContext) {
 	localctx = NewPrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primaryContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 366, Java8ParserRULE_primaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary)
@@ -28594,7 +30434,7 @@ func (p *Java8Parser) PrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary
 type IPrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primaryContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primaryContext differentiates from other interfaces.
@@ -28768,6 +30608,16 @@ func (s *PrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primaryContext) En
 func (s *PrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primaryContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitPrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary(s)
+	}
+}
+
+func (s *PrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -28957,7 +30807,7 @@ func (p *Java8Parser) PrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_prima
 type IClassInstanceCreationExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsClassInstanceCreationExpressionContext differentiates from other interfaces.
@@ -29119,6 +30969,16 @@ func (s *ClassInstanceCreationExpressionContext) EnterRule(listener antlr.ParseT
 func (s *ClassInstanceCreationExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitClassInstanceCreationExpression(s)
+	}
+}
+
+func (s *ClassInstanceCreationExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitClassInstanceCreationExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -29434,7 +31294,7 @@ func (p *Java8Parser) ClassInstanceCreationExpression() (localctx IClassInstance
 type IClassInstanceCreationExpression_lf_primaryContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsClassInstanceCreationExpression_lf_primaryContext differentiates from other interfaces.
@@ -29572,6 +31432,16 @@ func (s *ClassInstanceCreationExpression_lf_primaryContext) ExitRule(listener an
 	}
 }
 
+func (s *ClassInstanceCreationExpression_lf_primaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitClassInstanceCreationExpression_lf_primary(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ClassInstanceCreationExpression_lf_primary() (localctx IClassInstanceCreationExpression_lf_primaryContext) {
 	localctx = NewClassInstanceCreationExpression_lf_primaryContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 372, Java8ParserRULE_classInstanceCreationExpression_lf_primary)
@@ -29679,7 +31549,7 @@ func (p *Java8Parser) ClassInstanceCreationExpression_lf_primary() (localctx ICl
 type IClassInstanceCreationExpression_lfno_primaryContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsClassInstanceCreationExpression_lfno_primaryContext differentiates from other interfaces.
@@ -29834,6 +31704,16 @@ func (s *ClassInstanceCreationExpression_lfno_primaryContext) EnterRule(listener
 func (s *ClassInstanceCreationExpression_lfno_primaryContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitClassInstanceCreationExpression_lfno_primary(s)
+	}
+}
+
+func (s *ClassInstanceCreationExpression_lfno_primaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitClassInstanceCreationExpression_lfno_primary(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -30065,7 +31945,7 @@ func (p *Java8Parser) ClassInstanceCreationExpression_lfno_primary() (localctx I
 type ITypeArgumentsOrDiamondContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsTypeArgumentsOrDiamondContext differentiates from other interfaces.
@@ -30137,6 +32017,16 @@ func (s *TypeArgumentsOrDiamondContext) ExitRule(listener antlr.ParseTreeListene
 	}
 }
 
+func (s *TypeArgumentsOrDiamondContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitTypeArgumentsOrDiamond(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) TypeArgumentsOrDiamond() (localctx ITypeArgumentsOrDiamondContext) {
 	localctx = NewTypeArgumentsOrDiamondContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 376, Java8ParserRULE_typeArgumentsOrDiamond)
@@ -30187,7 +32077,7 @@ func (p *Java8Parser) TypeArgumentsOrDiamond() (localctx ITypeArgumentsOrDiamond
 type IFieldAccessContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsFieldAccessContext differentiates from other interfaces.
@@ -30277,6 +32167,16 @@ func (s *FieldAccessContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *FieldAccessContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitFieldAccess(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) FieldAccess() (localctx IFieldAccessContext) {
 	localctx = NewFieldAccessContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 378, Java8ParserRULE_fieldAccess)
@@ -30362,7 +32262,7 @@ func (p *Java8Parser) FieldAccess() (localctx IFieldAccessContext) {
 type IFieldAccess_lf_primaryContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsFieldAccess_lf_primaryContext differentiates from other interfaces.
@@ -30424,6 +32324,16 @@ func (s *FieldAccess_lf_primaryContext) ExitRule(listener antlr.ParseTreeListene
 	}
 }
 
+func (s *FieldAccess_lf_primaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitFieldAccess_lf_primary(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) FieldAccess_lf_primary() (localctx IFieldAccess_lf_primaryContext) {
 	localctx = NewFieldAccess_lf_primaryContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 380, Java8ParserRULE_fieldAccess_lf_primary)
@@ -30461,7 +32371,7 @@ func (p *Java8Parser) FieldAccess_lf_primary() (localctx IFieldAccess_lf_primary
 type IFieldAccess_lfno_primaryContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsFieldAccess_lfno_primaryContext differentiates from other interfaces.
@@ -30541,6 +32451,16 @@ func (s *FieldAccess_lfno_primaryContext) ExitRule(listener antlr.ParseTreeListe
 	}
 }
 
+func (s *FieldAccess_lfno_primaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitFieldAccess_lfno_primary(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) FieldAccess_lfno_primary() (localctx IFieldAccess_lfno_primaryContext) {
 	localctx = NewFieldAccess_lfno_primaryContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 382, Java8ParserRULE_fieldAccess_lfno_primary)
@@ -30614,7 +32534,7 @@ func (p *Java8Parser) FieldAccess_lfno_primary() (localctx IFieldAccess_lfno_pri
 type IArrayAccessContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsArrayAccessContext differentiates from other interfaces.
@@ -30750,6 +32670,16 @@ func (s *ArrayAccessContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ArrayAccessContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitArrayAccess(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ArrayAccess() (localctx IArrayAccessContext) {
 	localctx = NewArrayAccessContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 384, Java8ParserRULE_arrayAccess)
@@ -30846,7 +32776,7 @@ func (p *Java8Parser) ArrayAccess() (localctx IArrayAccessContext) {
 type IArrayAccess_lf_primaryContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsArrayAccess_lf_primaryContext differentiates from other interfaces.
@@ -30972,6 +32902,16 @@ func (s *ArrayAccess_lf_primaryContext) ExitRule(listener antlr.ParseTreeListene
 	}
 }
 
+func (s *ArrayAccess_lf_primaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitArrayAccess_lf_primary(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ArrayAccess_lf_primary() (localctx IArrayAccess_lf_primaryContext) {
 	localctx = NewArrayAccess_lf_primaryContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 386, Java8ParserRULE_arrayAccess_lf_primary)
@@ -31048,7 +32988,7 @@ func (p *Java8Parser) ArrayAccess_lf_primary() (localctx IArrayAccess_lf_primary
 type IArrayAccess_lfno_primaryContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsArrayAccess_lfno_primaryContext differentiates from other interfaces.
@@ -31184,6 +33124,16 @@ func (s *ArrayAccess_lfno_primaryContext) ExitRule(listener antlr.ParseTreeListe
 	}
 }
 
+func (s *ArrayAccess_lfno_primaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitArrayAccess_lfno_primary(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ArrayAccess_lfno_primary() (localctx IArrayAccess_lfno_primaryContext) {
 	localctx = NewArrayAccess_lfno_primaryContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 388, Java8ParserRULE_arrayAccess_lfno_primary)
@@ -31283,7 +33233,7 @@ func (p *Java8Parser) ArrayAccess_lfno_primary() (localctx IArrayAccess_lfno_pri
 type IMethodInvocationContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsMethodInvocationContext differentiates from other interfaces.
@@ -31418,6 +33368,16 @@ func (s *MethodInvocationContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *MethodInvocationContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitMethodInvocation(s)
+	}
+}
+
+func (s *MethodInvocationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitMethodInvocation(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -31713,7 +33673,7 @@ func (p *Java8Parser) MethodInvocation() (localctx IMethodInvocationContext) {
 type IMethodInvocation_lf_primaryContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsMethodInvocation_lf_primaryContext differentiates from other interfaces.
@@ -31803,6 +33763,16 @@ func (s *MethodInvocation_lf_primaryContext) ExitRule(listener antlr.ParseTreeLi
 	}
 }
 
+func (s *MethodInvocation_lf_primaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitMethodInvocation_lf_primary(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) MethodInvocation_lf_primary() (localctx IMethodInvocation_lf_primaryContext) {
 	localctx = NewMethodInvocation_lf_primaryContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 392, Java8ParserRULE_methodInvocation_lf_primary)
@@ -31871,7 +33841,7 @@ func (p *Java8Parser) MethodInvocation_lf_primary() (localctx IMethodInvocation_
 type IMethodInvocation_lfno_primaryContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsMethodInvocation_lfno_primaryContext differentiates from other interfaces.
@@ -31996,6 +33966,16 @@ func (s *MethodInvocation_lfno_primaryContext) EnterRule(listener antlr.ParseTre
 func (s *MethodInvocation_lfno_primaryContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitMethodInvocation_lfno_primary(s)
+	}
+}
+
+func (s *MethodInvocation_lfno_primaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitMethodInvocation_lfno_primary(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -32246,7 +34226,7 @@ func (p *Java8Parser) MethodInvocation_lfno_primary() (localctx IMethodInvocatio
 type IArgumentListContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsArgumentListContext differentiates from other interfaces.
@@ -32331,6 +34311,16 @@ func (s *ArgumentListContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ArgumentListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitArgumentList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ArgumentList() (localctx IArgumentListContext) {
 	localctx = NewArgumentListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 396, Java8ParserRULE_argumentList)
@@ -32383,7 +34373,7 @@ func (p *Java8Parser) ArgumentList() (localctx IArgumentListContext) {
 type IMethodReferenceContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsMethodReferenceContext differentiates from other interfaces.
@@ -32524,6 +34514,16 @@ func (s *MethodReferenceContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *MethodReferenceContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitMethodReference(s)
+	}
+}
+
+func (s *MethodReferenceContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitMethodReference(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -32739,7 +34739,7 @@ func (p *Java8Parser) MethodReference() (localctx IMethodReferenceContext) {
 type IMethodReference_lf_primaryContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsMethodReference_lf_primaryContext differentiates from other interfaces.
@@ -32811,6 +34811,16 @@ func (s *MethodReference_lf_primaryContext) ExitRule(listener antlr.ParseTreeLis
 	}
 }
 
+func (s *MethodReference_lf_primaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitMethodReference_lf_primary(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) MethodReference_lf_primary() (localctx IMethodReference_lf_primaryContext) {
 	localctx = NewMethodReference_lf_primaryContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 400, Java8ParserRULE_methodReference_lf_primary)
@@ -32860,7 +34870,7 @@ func (p *Java8Parser) MethodReference_lf_primary() (localctx IMethodReference_lf
 type IMethodReference_lfno_primaryContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsMethodReference_lfno_primaryContext differentiates from other interfaces.
@@ -32991,6 +35001,16 @@ func (s *MethodReference_lfno_primaryContext) EnterRule(listener antlr.ParseTree
 func (s *MethodReference_lfno_primaryContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitMethodReference_lfno_primary(s)
+	}
+}
+
+func (s *MethodReference_lfno_primaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitMethodReference_lfno_primary(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -33180,7 +35200,7 @@ func (p *Java8Parser) MethodReference_lfno_primary() (localctx IMethodReference_
 type IArrayCreationExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsArrayCreationExpressionContext differentiates from other interfaces.
@@ -33285,6 +35305,16 @@ func (s *ArrayCreationExpressionContext) EnterRule(listener antlr.ParseTreeListe
 func (s *ArrayCreationExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitArrayCreationExpression(s)
+	}
+}
+
+func (s *ArrayCreationExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitArrayCreationExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -33408,7 +35438,7 @@ func (p *Java8Parser) ArrayCreationExpression() (localctx IArrayCreationExpressi
 type IDimExprsContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsDimExprsContext differentiates from other interfaces.
@@ -33485,6 +35515,16 @@ func (s *DimExprsContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *DimExprsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitDimExprs(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) DimExprs() (localctx IDimExprsContext) {
 	localctx = NewDimExprsContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 406, Java8ParserRULE_dimExprs)
@@ -33536,7 +35576,7 @@ func (p *Java8Parser) DimExprs() (localctx IDimExprsContext) {
 type IDimExprContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsDimExprContext differentiates from other interfaces.
@@ -33631,6 +35671,16 @@ func (s *DimExprContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *DimExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitDimExpr(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) DimExpr() (localctx IDimExprContext) {
 	localctx = NewDimExprContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 408, Java8ParserRULE_dimExpr)
@@ -33687,7 +35737,7 @@ func (p *Java8Parser) DimExpr() (localctx IDimExprContext) {
 type IConstantExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsConstantExpressionContext differentiates from other interfaces.
@@ -33751,6 +35801,16 @@ func (s *ConstantExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ConstantExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitConstantExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ConstantExpression() (localctx IConstantExpressionContext) {
 	localctx = NewConstantExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 410, Java8ParserRULE_constantExpression)
@@ -33784,7 +35844,7 @@ func (p *Java8Parser) ConstantExpression() (localctx IConstantExpressionContext)
 type IExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsExpressionContext differentiates from other interfaces.
@@ -33858,6 +35918,16 @@ func (s *ExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) Expression() (localctx IExpressionContext) {
 	localctx = NewExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 412, Java8ParserRULE_expression)
@@ -33904,7 +35974,7 @@ func (p *Java8Parser) Expression() (localctx IExpressionContext) {
 type ILambdaExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsLambdaExpressionContext differentiates from other interfaces.
@@ -33982,6 +36052,16 @@ func (s *LambdaExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *LambdaExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitLambdaExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) LambdaExpression() (localctx ILambdaExpressionContext) {
 	localctx = NewLambdaExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 414, Java8ParserRULE_lambdaExpression)
@@ -34023,7 +36103,7 @@ func (p *Java8Parser) LambdaExpression() (localctx ILambdaExpressionContext) {
 type ILambdaParametersContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsLambdaParametersContext differentiates from other interfaces.
@@ -34109,6 +36189,16 @@ func (s *LambdaParametersContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *LambdaParametersContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitLambdaParameters(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) LambdaParameters() (localctx ILambdaParametersContext) {
 	localctx = NewLambdaParametersContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 416, Java8ParserRULE_lambdaParameters)
@@ -34186,7 +36276,7 @@ func (p *Java8Parser) LambdaParameters() (localctx ILambdaParametersContext) {
 type IInferredFormalParameterListContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsInferredFormalParameterListContext differentiates from other interfaces.
@@ -34256,6 +36346,16 @@ func (s *InferredFormalParameterListContext) ExitRule(listener antlr.ParseTreeLi
 	}
 }
 
+func (s *InferredFormalParameterListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitInferredFormalParameterList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) InferredFormalParameterList() (localctx IInferredFormalParameterListContext) {
 	localctx = NewInferredFormalParameterListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 418, Java8ParserRULE_inferredFormalParameterList)
@@ -34308,7 +36408,7 @@ func (p *Java8Parser) InferredFormalParameterList() (localctx IInferredFormalPar
 type ILambdaBodyContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsLambdaBodyContext differentiates from other interfaces.
@@ -34382,6 +36482,16 @@ func (s *LambdaBodyContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *LambdaBodyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitLambdaBody(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) LambdaBody() (localctx ILambdaBodyContext) {
 	localctx = NewLambdaBodyContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 420, Java8ParserRULE_lambdaBody)
@@ -34431,7 +36541,7 @@ func (p *Java8Parser) LambdaBody() (localctx ILambdaBodyContext) {
 type IAssignmentExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsAssignmentExpressionContext differentiates from other interfaces.
@@ -34505,6 +36615,16 @@ func (s *AssignmentExpressionContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *AssignmentExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitAssignmentExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) AssignmentExpression() (localctx IAssignmentExpressionContext) {
 	localctx = NewAssignmentExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 422, Java8ParserRULE_assignmentExpression)
@@ -34551,7 +36671,7 @@ func (p *Java8Parser) AssignmentExpression() (localctx IAssignmentExpressionCont
 type IAssignmentContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsAssignmentContext differentiates from other interfaces.
@@ -34635,6 +36755,16 @@ func (s *AssignmentContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *AssignmentContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitAssignment(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) Assignment() (localctx IAssignmentContext) {
 	localctx = NewAssignmentContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 424, Java8ParserRULE_assignment)
@@ -34676,7 +36806,7 @@ func (p *Java8Parser) Assignment() (localctx IAssignmentContext) {
 type ILeftHandSideContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsLeftHandSideContext differentiates from other interfaces.
@@ -34760,6 +36890,16 @@ func (s *LeftHandSideContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *LeftHandSideContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitLeftHandSide(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) LeftHandSide() (localctx ILeftHandSideContext) {
 	localctx = NewLeftHandSideContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 426, Java8ParserRULE_leftHandSide)
@@ -34813,7 +36953,7 @@ func (p *Java8Parser) LeftHandSide() (localctx ILeftHandSideContext) {
 type IAssignmentOperatorContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsAssignmentOperatorContext differentiates from other interfaces.
@@ -34915,6 +37055,16 @@ func (s *AssignmentOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *AssignmentOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitAssignmentOperator(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) AssignmentOperator() (localctx IAssignmentOperatorContext) {
 	localctx = NewAssignmentOperatorContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 428, Java8ParserRULE_assignmentOperator)
@@ -34956,7 +37106,7 @@ func (p *Java8Parser) AssignmentOperator() (localctx IAssignmentOperatorContext)
 type IConditionalExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsConditionalExpressionContext differentiates from other interfaces.
@@ -35048,6 +37198,16 @@ func (s *ConditionalExpressionContext) ExitRule(listener antlr.ParseTreeListener
 	}
 }
 
+func (s *ConditionalExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitConditionalExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) ConditionalExpression() (localctx IConditionalExpressionContext) {
 	localctx = NewConditionalExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 430, Java8ParserRULE_conditionalExpression)
@@ -35110,7 +37270,7 @@ func (p *Java8Parser) ConditionalExpression() (localctx IConditionalExpressionCo
 type IConditionalOrExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsConditionalOrExpressionContext differentiates from other interfaces.
@@ -35185,6 +37345,16 @@ func (s *ConditionalOrExpressionContext) EnterRule(listener antlr.ParseTreeListe
 func (s *ConditionalOrExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitConditionalOrExpression(s)
+	}
+}
+
+func (s *ConditionalOrExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitConditionalOrExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -35265,7 +37435,7 @@ func (p *Java8Parser) conditionalOrExpression(_p int) (localctx IConditionalOrEx
 type IConditionalAndExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsConditionalAndExpressionContext differentiates from other interfaces.
@@ -35340,6 +37510,16 @@ func (s *ConditionalAndExpressionContext) EnterRule(listener antlr.ParseTreeList
 func (s *ConditionalAndExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitConditionalAndExpression(s)
+	}
+}
+
+func (s *ConditionalAndExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitConditionalAndExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -35420,7 +37600,7 @@ func (p *Java8Parser) conditionalAndExpression(_p int) (localctx IConditionalAnd
 type IInclusiveOrExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsInclusiveOrExpressionContext differentiates from other interfaces.
@@ -35495,6 +37675,16 @@ func (s *InclusiveOrExpressionContext) EnterRule(listener antlr.ParseTreeListene
 func (s *InclusiveOrExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitInclusiveOrExpression(s)
+	}
+}
+
+func (s *InclusiveOrExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitInclusiveOrExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -35575,7 +37765,7 @@ func (p *Java8Parser) inclusiveOrExpression(_p int) (localctx IInclusiveOrExpres
 type IExclusiveOrExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsExclusiveOrExpressionContext differentiates from other interfaces.
@@ -35650,6 +37840,16 @@ func (s *ExclusiveOrExpressionContext) EnterRule(listener antlr.ParseTreeListene
 func (s *ExclusiveOrExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitExclusiveOrExpression(s)
+	}
+}
+
+func (s *ExclusiveOrExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitExclusiveOrExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -35730,7 +37930,7 @@ func (p *Java8Parser) exclusiveOrExpression(_p int) (localctx IExclusiveOrExpres
 type IAndExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsAndExpressionContext differentiates from other interfaces.
@@ -35805,6 +38005,16 @@ func (s *AndExpressionContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *AndExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitAndExpression(s)
+	}
+}
+
+func (s *AndExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitAndExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -35885,7 +38095,7 @@ func (p *Java8Parser) andExpression(_p int) (localctx IAndExpressionContext) {
 type IEqualityExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsEqualityExpressionContext differentiates from other interfaces.
@@ -35964,6 +38174,16 @@ func (s *EqualityExpressionContext) EnterRule(listener antlr.ParseTreeListener) 
 func (s *EqualityExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitEqualityExpression(s)
+	}
+}
+
+func (s *EqualityExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitEqualityExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -36067,7 +38287,7 @@ func (p *Java8Parser) equalityExpression(_p int) (localctx IEqualityExpressionCo
 type IRelationalExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsRelationalExpressionContext differentiates from other interfaces.
@@ -36168,6 +38388,16 @@ func (s *RelationalExpressionContext) EnterRule(listener antlr.ParseTreeListener
 func (s *RelationalExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitRelationalExpression(s)
+	}
+}
+
+func (s *RelationalExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitRelationalExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -36322,7 +38552,7 @@ func (p *Java8Parser) relationalExpression(_p int) (localctx IRelationalExpressi
 type IShiftExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsShiftExpressionContext differentiates from other interfaces.
@@ -36409,6 +38639,16 @@ func (s *ShiftExpressionContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ShiftExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitShiftExpression(s)
+	}
+}
+
+func (s *ShiftExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitShiftExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -36545,7 +38785,7 @@ func (p *Java8Parser) shiftExpression(_p int) (localctx IShiftExpressionContext)
 type IAdditiveExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsAdditiveExpressionContext differentiates from other interfaces.
@@ -36624,6 +38864,16 @@ func (s *AdditiveExpressionContext) EnterRule(listener antlr.ParseTreeListener) 
 func (s *AdditiveExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitAdditiveExpression(s)
+	}
+}
+
+func (s *AdditiveExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitAdditiveExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -36727,7 +38977,7 @@ func (p *Java8Parser) additiveExpression(_p int) (localctx IAdditiveExpressionCo
 type IMultiplicativeExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsMultiplicativeExpressionContext differentiates from other interfaces.
@@ -36810,6 +39060,16 @@ func (s *MultiplicativeExpressionContext) EnterRule(listener antlr.ParseTreeList
 func (s *MultiplicativeExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitMultiplicativeExpression(s)
+	}
+}
+
+func (s *MultiplicativeExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitMultiplicativeExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -36930,7 +39190,7 @@ func (p *Java8Parser) multiplicativeExpression(_p int) (localctx IMultiplicative
 type IUnaryExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsUnaryExpressionContext differentiates from other interfaces.
@@ -37032,6 +39292,16 @@ func (s *UnaryExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *UnaryExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitUnaryExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) UnaryExpression() (localctx IUnaryExpressionContext) {
 	localctx = NewUnaryExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 452, Java8ParserRULE_unaryExpression)
@@ -37110,7 +39380,7 @@ func (p *Java8Parser) UnaryExpression() (localctx IUnaryExpressionContext) {
 type IPreIncrementExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPreIncrementExpressionContext differentiates from other interfaces.
@@ -37178,6 +39448,16 @@ func (s *PreIncrementExpressionContext) ExitRule(listener antlr.ParseTreeListene
 	}
 }
 
+func (s *PreIncrementExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPreIncrementExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) PreIncrementExpression() (localctx IPreIncrementExpressionContext) {
 	localctx = NewPreIncrementExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 454, Java8ParserRULE_preIncrementExpression)
@@ -37215,7 +39495,7 @@ func (p *Java8Parser) PreIncrementExpression() (localctx IPreIncrementExpression
 type IPreDecrementExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPreDecrementExpressionContext differentiates from other interfaces.
@@ -37283,6 +39563,16 @@ func (s *PreDecrementExpressionContext) ExitRule(listener antlr.ParseTreeListene
 	}
 }
 
+func (s *PreDecrementExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPreDecrementExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) PreDecrementExpression() (localctx IPreDecrementExpressionContext) {
 	localctx = NewPreDecrementExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 456, Java8ParserRULE_preDecrementExpression)
@@ -37320,7 +39610,7 @@ func (p *Java8Parser) PreDecrementExpression() (localctx IPreDecrementExpression
 type IUnaryExpressionNotPlusMinusContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsUnaryExpressionNotPlusMinusContext differentiates from other interfaces.
@@ -37412,6 +39702,16 @@ func (s *UnaryExpressionNotPlusMinusContext) ExitRule(listener antlr.ParseTreeLi
 	}
 }
 
+func (s *UnaryExpressionNotPlusMinusContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitUnaryExpressionNotPlusMinus(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) UnaryExpressionNotPlusMinus() (localctx IUnaryExpressionNotPlusMinusContext) {
 	localctx = NewUnaryExpressionNotPlusMinusContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 458, Java8ParserRULE_unaryExpressionNotPlusMinus)
@@ -37480,7 +39780,7 @@ func (p *Java8Parser) UnaryExpressionNotPlusMinus() (localctx IUnaryExpressionNo
 type IPostfixExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPostfixExpressionContext differentiates from other interfaces.
@@ -37600,6 +39900,16 @@ func (s *PostfixExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PostfixExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPostfixExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) PostfixExpression() (localctx IPostfixExpressionContext) {
 	localctx = NewPostfixExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 460, Java8ParserRULE_postfixExpression)
@@ -37678,7 +39988,7 @@ func (p *Java8Parser) PostfixExpression() (localctx IPostfixExpressionContext) {
 type IPostIncrementExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPostIncrementExpressionContext differentiates from other interfaces.
@@ -37746,6 +40056,16 @@ func (s *PostIncrementExpressionContext) ExitRule(listener antlr.ParseTreeListen
 	}
 }
 
+func (s *PostIncrementExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPostIncrementExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) PostIncrementExpression() (localctx IPostIncrementExpressionContext) {
 	localctx = NewPostIncrementExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 462, Java8ParserRULE_postIncrementExpression)
@@ -37783,7 +40103,7 @@ func (p *Java8Parser) PostIncrementExpression() (localctx IPostIncrementExpressi
 type IPostIncrementExpression_lf_postfixExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPostIncrementExpression_lf_postfixExpressionContext differentiates from other interfaces.
@@ -37844,6 +40164,16 @@ func (s *PostIncrementExpression_lf_postfixExpressionContext) ExitRule(listener 
 	}
 }
 
+func (s *PostIncrementExpression_lf_postfixExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPostIncrementExpression_lf_postfixExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) PostIncrementExpression_lf_postfixExpression() (localctx IPostIncrementExpression_lf_postfixExpressionContext) {
 	localctx = NewPostIncrementExpression_lf_postfixExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 464, Java8ParserRULE_postIncrementExpression_lf_postfixExpression)
@@ -37877,7 +40207,7 @@ func (p *Java8Parser) PostIncrementExpression_lf_postfixExpression() (localctx I
 type IPostDecrementExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPostDecrementExpressionContext differentiates from other interfaces.
@@ -37945,6 +40275,16 @@ func (s *PostDecrementExpressionContext) ExitRule(listener antlr.ParseTreeListen
 	}
 }
 
+func (s *PostDecrementExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPostDecrementExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) PostDecrementExpression() (localctx IPostDecrementExpressionContext) {
 	localctx = NewPostDecrementExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 466, Java8ParserRULE_postDecrementExpression)
@@ -37982,7 +40322,7 @@ func (p *Java8Parser) PostDecrementExpression() (localctx IPostDecrementExpressi
 type IPostDecrementExpression_lf_postfixExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsPostDecrementExpression_lf_postfixExpressionContext differentiates from other interfaces.
@@ -38043,6 +40383,16 @@ func (s *PostDecrementExpression_lf_postfixExpressionContext) ExitRule(listener 
 	}
 }
 
+func (s *PostDecrementExpression_lf_postfixExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitPostDecrementExpression_lf_postfixExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *Java8Parser) PostDecrementExpression_lf_postfixExpression() (localctx IPostDecrementExpression_lf_postfixExpressionContext) {
 	localctx = NewPostDecrementExpression_lf_postfixExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 468, Java8ParserRULE_postDecrementExpression_lf_postfixExpression)
@@ -38076,7 +40426,7 @@ func (p *Java8Parser) PostDecrementExpression_lf_postfixExpression() (localctx I
 type ICastExpressionContext interface {
 	antlr.ParserRuleContext
 
-	// GetParser returns the parser.
+	// GetParser returns the base.
 	GetParser() antlr.Parser
 
 	// IsCastExpressionContext differentiates from other interfaces.
@@ -38208,6 +40558,16 @@ func (s *CastExpressionContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *CastExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(Java8ParserListener); ok {
 		listenerT.ExitCastExpression(s)
+	}
+}
+
+func (s *CastExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case Java8ParserVisitor:
+		return t.VisitCastExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 

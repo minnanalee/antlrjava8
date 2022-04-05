@@ -1,13 +1,14 @@
 package main
 
 import (
-	"antlrjava8/parser"
+	"antlrjava8/base"
 	"fmt"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
+	"reflect"
 )
 
 type TreeShapeListener struct {
-	*parser.BaseJava8ParserListener
+	*base.BaseJava8ParserListener
 }
 
 func NewTreeShapeListener() *TreeShapeListener {
@@ -15,20 +16,41 @@ func NewTreeShapeListener() *TreeShapeListener {
 }
 
 func (this *TreeShapeListener) EnterEveryRule(ctx antlr.ParserRuleContext) {
-	fmt.Println(RuleNames[ctx.GetRuleContext().GetRuleIndex()])
-	fmt.Println(ctx.GetParent().GetChildCount())
-	fmt.Println(ctx.GetText())
+	fmt.Println("Node RuleName\t", RuleNames[ctx.GetRuleContext().GetRuleIndex()])
+	fmt.Println("Node Context: \t", ctx.GetText())
+	fmt.Println("Node Type: \t", fmt.Sprint(reflect.TypeOf(ctx)))
+
+	for i := 0; i < ctx.GetChildCount(); i++ {
+		fmt.Println("Child Type", i, ": \t", fmt.Sprint(reflect.TypeOf(ctx.GetChild(i))))
+		//fmt.Println("Child ",i,":\t", ctx.GetChild(i).)
+	}
+	//非叶子节点不打印全链路
+	if !(ctx.GetChildCount() == 1 && fmt.Sprint(reflect.TypeOf(ctx.GetChild(0).GetPayload())) == "*antlr.CommonToken") {
+		return
+	}
+	parent := ctx.GetParent()
+	for ; parent != nil; parent = parent.GetParent() {
+		switch parentType := parent.GetPayload().(type) {
+		case *antlr.BaseParserRuleContext:
+			fmt.Println("Ancestors Type:\t", RuleNames[parentType.GetRuleIndex()])
+			fmt.Println("Ancestors Text:\t", parentType.GetText())
+		}
+	}
 }
 
 func main() {
 	input, _ := antlr.NewFileStream("h.java")
-	lexer := parser.NewJava8Lexer(input)
+	lexer := base.NewJava8Lexer(input)
 	stream := antlr.NewCommonTokenStream(lexer, 0)
-	p := parser.NewJava8Parser(stream)
+	p := base.NewJava8Parser(stream)
 	p.AddErrorListener(antlr.NewDiagnosticErrorListener(true))
 	p.BuildParseTrees = true
 	tree := p.CompilationUnit()
 	antlr.ParseTreeWalkerDefault.Walk(NewTreeShapeListener(), tree)
+
+	/*	v:=new(base.Java8ParserVisitorImpl)
+		v.Visit(tree)*/
+
 }
 
 var RuleNames = []string{
