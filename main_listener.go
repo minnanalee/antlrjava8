@@ -1,9 +1,9 @@
 package main
 
 import (
-	"antlrjava8/base"
 	"fmt"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
+	"github.com/minnanalee/antlrjava8/base"
 	"reflect"
 )
 
