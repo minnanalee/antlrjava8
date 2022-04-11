@@ -1,4 +1,4 @@
-module antlrjava8
+module github.com/minnanalee/antlrjava8
 
 go 1.17
 

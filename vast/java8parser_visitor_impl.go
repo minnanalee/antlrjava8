@@ -1,19 +1,61 @@
 package vast
 
 import (
-	"antlrjava8/base"
+	"encoding/json"
 	"fmt"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
+	"github.com/minnanalee/antlrjava8/base"
 	"reflect"
 )
 
+type ClassType struct {
+	Annotation []string
+	ClassName  string
+	Methods    []string
+}
+
+type CallGraphLog struct {
+	Package string
+	Imports []string
+	Classes []struct {
+		ClassName       string
+		Class_SQN       string
+		ClassAnnotation string
+		Methods         []struct {
+			MethodName string
+			Method_SQN string
+		}
+	}
+}
+
+type Method struct {
+}
+
+type SourceInfo struct {
+	Start, End, Line, Column int
+	Source                   string
+}
+
+// 解析的源代码的起止位置，行、列号，内容
+func getSourceInfo(ctx antlr.BaseParserRuleContext) *SourceInfo {
+	start, end := ctx.GetStart().GetStart(), ctx.GetStop().GetStop()
+	return &SourceInfo{Line: ctx.GetStart().GetLine(), Start: start, End: end,
+		Column: ctx.GetStart().GetColumn(),
+		Source: ctx.GetStart().GetInputStream().GetTextFromInterval(&antlr.Interval{
+			Start: start, Stop: end})}
+
+}
+
 type Visitor struct {
 	antlr.BaseParseTreeVisitor
+	ClassMap map[string]ClassType
 }
 
 func NewVisitor() *Visitor {
+	classMap := make(map[string]ClassType)
 	return &Visitor{
 		BaseParseTreeVisitor: antlr.BaseParseTreeVisitor{},
+		ClassMap:             classMap,
 	}
 }
 
@@ -37,81 +79,24 @@ func (v *Visitor) VisitChildren(node antlr.RuleNode) interface{} {
 		switch rr := ch.(type) {
 		case *antlr.TerminalNodeImpl:
 			fmt.Println("Terminal Node Value: \t" + rr.GetText())
-		default:
-			//fmt.Println("Child "+strconv.Itoa(i)+" Type: \t"+fmt.Sprint(reflect.TypeOf(rr)))
+			/*		default:
+					fmt.Println("Middle Node Value: \t"+ch.(antlr.ParseTree).ToStringTree(nil,antlr.Parser)
+			*/
 		}
 		ch.(antlr.ParseTree).Accept(v)
 	}
 	return nil
 }
+func (v *Visitor) VisitNormalClassDeclaration(ctx *base.NormalClassDeclarationContext) interface{} {
+	fmt.Println("RuleName: " + RuleNames[ctx.GetRuleIndex()] + "\t->\t Text: " + ctx.GetText() + "\t->\tType:" + fmt.Sprint(reflect.TypeOf(ctx)))
+	jSourceInfo, _ := json.Marshal(getSourceInfo(*ctx.BaseParserRuleContext))
+	fmt.Println("RuleSourceInfo: ", string(jSourceInfo))
+	for i := 0; i < ctx.GetChildCount(); i++ {
+		fmt.Println("normalClassDeclaration child ", i)
+		antlr.ParseTreeWalkerDefault.Walk(NewTreeShapeListener(), ctx.GetChild(i))
+	}
 
-var RuleNames = []string{
-	"literal", "primitiveType", "numericType", "integralType", "floatingPointType",
-	"referenceType", "classOrInterfaceType", "classType", "classType_lf_classOrInterfaceType",
-	"classType_lfno_classOrInterfaceType", "interfaceType", "interfaceType_lf_classOrInterfaceType",
-	"interfaceType_lfno_classOrInterfaceType", "typeVariable", "arrayType",
-	"dims", "typeParameter", "typeParameterModifier", "typeBound", "additionalBound",
-	"typeArguments", "typeArgumentList", "typeArgument", "wildcard", "wildcardBounds",
-	"packageName", "typeName", "packageOrTypeName", "expressionName", "methodName",
-	"ambiguousName", "compilationUnit", "packageDeclaration", "packageModifier",
-	"importDeclaration", "singleTypeImportDeclaration", "typeImportOnDemandDeclaration",
-	"singleStaticImportDeclaration", "staticImportOnDemandDeclaration", "typeDeclaration",
-	"classDeclaration", "normalClassDeclaration", "classModifier", "typeParameters",
-	"typeParameterList", "superclass", "superinterfaces", "interfaceTypeList",
-	"classBody", "classBodyDeclaration", "classMemberDeclaration", "fieldDeclaration",
-	"fieldModifier", "variableDeclaratorList", "variableDeclarator", "variableDeclaratorId",
-	"variableInitializer", "unannType", "unannPrimitiveType", "unannReferenceType",
-	"unannClassOrInterfaceType", "unannClassType", "unannClassType_lf_unannClassOrInterfaceType",
-	"unannClassType_lfno_unannClassOrInterfaceType", "unannInterfaceType",
-	"unannInterfaceType_lf_unannClassOrInterfaceType", "unannInterfaceType_lfno_unannClassOrInterfaceType",
-	"unannTypeVariable", "unannArrayType", "methodDeclaration", "methodModifier",
-	"methodHeader", "result", "methodDeclarator", "formalParameterList", "formalParameters",
-	"formalParameter", "variableModifier", "lastFormalParameter", "receiverParameter",
-	"throws_", "exceptionTypeList", "exceptionType", "methodBody", "instanceInitializer",
-	"staticInitializer", "constructorDeclaration", "constructorModifier", "constructorDeclarator",
-	"simpleTypeName", "constructorBody", "explicitConstructorInvocation", "enumDeclaration",
-	"enumBody", "enumConstantList", "enumConstant", "enumConstantModifier",
-	"enumBodyDeclarations", "interfaceDeclaration", "normalInterfaceDeclaration",
-	"interfaceModifier", "extendsInterfaces", "interfaceBody", "interfaceMemberDeclaration",
-	"constantDeclaration", "constantModifier", "interfaceMethodDeclaration",
-	"interfaceMethodModifier", "annotationTypeDeclaration", "annotationTypeBody",
-	"annotationTypeMemberDeclaration", "annotationTypeElementDeclaration",
-	"annotationTypeElementModifier", "defaultValue", "annotation", "normalAnnotation",
-	"elementValuePairList", "elementValuePair", "elementValue", "elementValueArrayInitializer",
-	"elementValueList", "markerAnnotation", "singleElementAnnotation", "arrayInitializer",
-	"variableInitializerList", "block", "blockStatements", "blockStatement",
-	"localVariableDeclarationStatement", "localVariableDeclaration", "statement",
-	"statementNoShortIf", "statementWithoutTrailingSubstatement", "emptyStatement_",
-	"labeledStatement", "labeledStatementNoShortIf", "expressionStatement",
-	"statementExpression", "ifThenStatement", "ifThenElseStatement", "ifThenElseStatementNoShortIf",
-	"assertStatement", "switchStatement", "switchBlock", "switchBlockStatementGroup",
-	"switchLabels", "switchLabel", "enumConstantName", "whileStatement", "whileStatementNoShortIf",
-	"doStatement", "forStatement", "forStatementNoShortIf", "basicForStatement",
-	"basicForStatementNoShortIf", "forInit", "forUpdate", "statementExpressionList",
-	"enhancedForStatement", "enhancedForStatementNoShortIf", "breakStatement",
-	"continueStatement", "returnStatement", "throwStatement", "synchronizedStatement",
-	"tryStatement", "catches", "catchClause", "catchFormalParameter", "catchType",
-	"finally_", "tryWithResourcesStatement", "resourceSpecification", "resourceList",
-	"resource", "primary", "primaryNoNewArray", "primaryNoNewArray_lf_arrayAccess",
-	"primaryNoNewArray_lfno_arrayAccess", "primaryNoNewArray_lf_primary", "primaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary",
-	"primaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary", "primaryNoNewArray_lfno_primary",
-	"primaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary", "primaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary",
-	"classInstanceCreationExpression", "classInstanceCreationExpression_lf_primary",
-	"classInstanceCreationExpression_lfno_primary", "typeArgumentsOrDiamond",
-	"fieldAccess", "fieldAccess_lf_primary", "fieldAccess_lfno_primary", "arrayAccess",
-	"arrayAccess_lf_primary", "arrayAccess_lfno_primary", "methodInvocation",
-	"methodInvocation_lf_primary", "methodInvocation_lfno_primary", "argumentList",
-	"methodReference", "methodReference_lf_primary", "methodReference_lfno_primary",
-	"arrayCreationExpression", "dimExprs", "dimExpr", "constantExpression",
-	"expression", "lambdaExpression", "lambdaParameters", "inferredFormalParameterList",
-	"lambdaBody", "assignmentExpression", "assignment", "leftHandSide", "assignmentOperator",
-	"conditionalExpression", "conditionalOrExpression", "conditionalAndExpression",
-	"inclusiveOrExpression", "exclusiveOrExpression", "andExpression", "equalityExpression",
-	"relationalExpression", "shiftExpression", "additiveExpression", "multiplicativeExpression",
-	"unaryExpression", "preIncrementExpression", "preDecrementExpression",
-	"unaryExpressionNotPlusMinus", "postfixExpression", "postIncrementExpression",
-	"postIncrementExpression_lf_postfixExpression", "postDecrementExpression",
-	"postDecrementExpression_lf_postfixExpression", "castExpression",
+	return v.VisitChildren(ctx)
 }
 
 func (v *Visitor) VisitLiteral(ctx *base.LiteralContext) interface{} {
@@ -319,11 +304,6 @@ func (v *Visitor) VisitClassDeclaration(ctx *base.ClassDeclarationContext) inter
 	return v.VisitChildren(ctx)
 }
 
-func (v *Visitor) VisitNormalClassDeclaration(ctx *base.NormalClassDeclarationContext) interface{} {
-	fmt.Println("RuleName: " + RuleNames[ctx.GetRuleIndex()] + "\t->\t Text: " + ctx.GetText() + "\t->\tType:" + fmt.Sprint(reflect.TypeOf(ctx)))
-	return v.VisitChildren(ctx)
-}
-
 func (v *Visitor) VisitClassModifier(ctx *base.ClassModifierContext) interface{} {
 	fmt.Println("RuleName: " + RuleNames[ctx.GetRuleIndex()] + "\t->\t Text: " + ctx.GetText() + "\t->\tType:" + fmt.Sprint(reflect.TypeOf(ctx)))
 	return v.VisitChildren(ctx)
@@ -460,7 +440,18 @@ func (v *Visitor) VisitUnannArrayType(ctx *base.UnannArrayTypeContext) interface
 }
 
 func (v *Visitor) VisitMethodDeclaration(ctx *base.MethodDeclarationContext) interface{} {
+
 	fmt.Println("RuleName: " + RuleNames[ctx.GetRuleIndex()] + "\t->\t Text: " + ctx.GetText() + "\t->\tType:" + fmt.Sprint(reflect.TypeOf(ctx)))
+
+	jSourceInfo, _ := json.Marshal(getSourceInfo(*ctx.BaseParserRuleContext))
+	fmt.Println("RuleSourceInfo: ", string(jSourceInfo))
+	for i := 0; i < ctx.GetChildCount(); i++ {
+		fmt.Println("normalClassDeclaration child ", i)
+		antlr.ParseTreeWalkerDefault.Walk(NewTreeShapeListener(), ctx.GetChild(i))
+	}
+
+	return v.VisitChildren(ctx)
+
 	return v.VisitChildren(ctx)
 }
 
@@ -1292,4 +1283,73 @@ func (v *Visitor) VisitPostDecrementExpression_lf_postfixExpression(ctx *base.Po
 func (v *Visitor) VisitCastExpression(ctx *base.CastExpressionContext) interface{} {
 	fmt.Println("RuleName: " + RuleNames[ctx.GetRuleIndex()] + "\t->\t Text: " + ctx.GetText() + "\t->\tType:" + fmt.Sprint(reflect.TypeOf(ctx)))
 	return v.VisitChildren(ctx)
+}
+
+var RuleNames = []string{
+	"literal", "primitiveType", "numericType", "integralType", "floatingPointType",
+	"referenceType", "classOrInterfaceType", "classType", "classType_lf_classOrInterfaceType",
+	"classType_lfno_classOrInterfaceType", "interfaceType", "interfaceType_lf_classOrInterfaceType",
+	"interfaceType_lfno_classOrInterfaceType", "typeVariable", "arrayType",
+	"dims", "typeParameter", "typeParameterModifier", "typeBound", "additionalBound",
+	"typeArguments", "typeArgumentList", "typeArgument", "wildcard", "wildcardBounds",
+	"packageName", "typeName", "packageOrTypeName", "expressionName", "methodName",
+	"ambiguousName", "compilationUnit", "packageDeclaration", "packageModifier",
+	"importDeclaration", "singleTypeImportDeclaration", "typeImportOnDemandDeclaration",
+	"singleStaticImportDeclaration", "staticImportOnDemandDeclaration", "typeDeclaration",
+	"classDeclaration", "normalClassDeclaration", "classModifier", "typeParameters",
+	"typeParameterList", "superclass", "superinterfaces", "interfaceTypeList",
+	"classBody", "classBodyDeclaration", "classMemberDeclaration", "fieldDeclaration",
+	"fieldModifier", "variableDeclaratorList", "variableDeclarator", "variableDeclaratorId",
+	"variableInitializer", "unannType", "unannPrimitiveType", "unannReferenceType",
+	"unannClassOrInterfaceType", "unannClassType", "unannClassType_lf_unannClassOrInterfaceType",
+	"unannClassType_lfno_unannClassOrInterfaceType", "unannInterfaceType",
+	"unannInterfaceType_lf_unannClassOrInterfaceType", "unannInterfaceType_lfno_unannClassOrInterfaceType",
+	"unannTypeVariable", "unannArrayType", "methodDeclaration", "methodModifier",
+	"methodHeader", "result", "methodDeclarator", "formalParameterList", "formalParameters",
+	"formalParameter", "variableModifier", "lastFormalParameter", "receiverParameter",
+	"throws_", "exceptionTypeList", "exceptionType", "methodBody", "instanceInitializer",
+	"staticInitializer", "constructorDeclaration", "constructorModifier", "constructorDeclarator",
+	"simpleTypeName", "constructorBody", "explicitConstructorInvocation", "enumDeclaration",
+	"enumBody", "enumConstantList", "enumConstant", "enumConstantModifier",
+	"enumBodyDeclarations", "interfaceDeclaration", "normalInterfaceDeclaration",
+	"interfaceModifier", "extendsInterfaces", "interfaceBody", "interfaceMemberDeclaration",
+	"constantDeclaration", "constantModifier", "interfaceMethodDeclaration",
+	"interfaceMethodModifier", "annotationTypeDeclaration", "annotationTypeBody",
+	"annotationTypeMemberDeclaration", "annotationTypeElementDeclaration",
+	"annotationTypeElementModifier", "defaultValue", "annotation", "normalAnnotation",
+	"elementValuePairList", "elementValuePair", "elementValue", "elementValueArrayInitializer",
+	"elementValueList", "markerAnnotation", "singleElementAnnotation", "arrayInitializer",
+	"variableInitializerList", "block", "blockStatements", "blockStatement",
+	"localVariableDeclarationStatement", "localVariableDeclaration", "statement",
+	"statementNoShortIf", "statementWithoutTrailingSubstatement", "emptyStatement_",
+	"labeledStatement", "labeledStatementNoShortIf", "expressionStatement",
+	"statementExpression", "ifThenStatement", "ifThenElseStatement", "ifThenElseStatementNoShortIf",
+	"assertStatement", "switchStatement", "switchBlock", "switchBlockStatementGroup",
+	"switchLabels", "switchLabel", "enumConstantName", "whileStatement", "whileStatementNoShortIf",
+	"doStatement", "forStatement", "forStatementNoShortIf", "basicForStatement",
+	"basicForStatementNoShortIf", "forInit", "forUpdate", "statementExpressionList",
+	"enhancedForStatement", "enhancedForStatementNoShortIf", "breakStatement",
+	"continueStatement", "returnStatement", "throwStatement", "synchronizedStatement",
+	"tryStatement", "catches", "catchClause", "catchFormalParameter", "catchType",
+	"finally_", "tryWithResourcesStatement", "resourceSpecification", "resourceList",
+	"resource", "primary", "primaryNoNewArray", "primaryNoNewArray_lf_arrayAccess",
+	"primaryNoNewArray_lfno_arrayAccess", "primaryNoNewArray_lf_primary", "primaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary",
+	"primaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary", "primaryNoNewArray_lfno_primary",
+	"primaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary", "primaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary",
+	"classInstanceCreationExpression", "classInstanceCreationExpression_lf_primary",
+	"classInstanceCreationExpression_lfno_primary", "typeArgumentsOrDiamond",
+	"fieldAccess", "fieldAccess_lf_primary", "fieldAccess_lfno_primary", "arrayAccess",
+	"arrayAccess_lf_primary", "arrayAccess_lfno_primary", "methodInvocation",
+	"methodInvocation_lf_primary", "methodInvocation_lfno_primary", "argumentList",
+	"methodReference", "methodReference_lf_primary", "methodReference_lfno_primary",
+	"arrayCreationExpression", "dimExprs", "dimExpr", "constantExpression",
+	"expression", "lambdaExpression", "lambdaParameters", "inferredFormalParameterList",
+	"lambdaBody", "assignmentExpression", "assignment", "leftHandSide", "assignmentOperator",
+	"conditionalExpression", "conditionalOrExpression", "conditionalAndExpression",
+	"inclusiveOrExpression", "exclusiveOrExpression", "andExpression", "equalityExpression",
+	"relationalExpression", "shiftExpression", "additiveExpression", "multiplicativeExpression",
+	"unaryExpression", "preIncrementExpression", "preDecrementExpression",
+	"unaryExpressionNotPlusMinus", "postfixExpression", "postIncrementExpression",
+	"postIncrementExpression_lf_postfixExpression", "postDecrementExpression",
+	"postDecrementExpression_lf_postfixExpression", "castExpression",
 }
